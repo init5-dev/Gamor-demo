@@ -1,0 +1,30 @@
+import './globals.css'
+import type { Metadata } from 'next'
+import { Ubuntu_Condensed as Ubuntu } from 'next/font/google'
+import Navbar from '@/components/navbar'
+
+const ubuntu = Ubuntu({ weight: ['400'], subsets: ['latin'] })
+
+export const metadata: Metadata = {
+  title: 'Gamor',
+  description: 'Plataforma de streaming de videojuegos',
+}
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="en">
+      <body className={ubuntu.className}>
+        <Navbar />
+        <main>
+          <div className='main-container'>
+            {children}
+          </div>
+        </main>
+      </body>
+    </html>
+  )
+}
