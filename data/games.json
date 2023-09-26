@@ -1,0 +1,93 @@
+[
+    {
+      "title": "Call of Duty: Warzone",
+      "type": "Acción",
+      "users": [
+        {
+          "name": "Juan Pérez",
+          "username": "juanperez"
+        },
+        {
+          "name": "María García",
+          "username": "mariagarcia"
+        },
+        {
+          "name": "Pedro López",
+          "username": "pedrolopez"
+        }
+      ]
+    },
+    {
+      "title": "Fortnite",
+      "type": "Multijugador",
+      "users": [
+        {
+          "name": "Sofia Rodríguez",
+          "username": "sofiarodriguez"
+        },
+        {
+          "name": "Antonio Sánchez",
+          "username": "antoniosanchez"
+        },
+        {
+          "name": "Luisa Gómez",
+          "username": "luisaGomez"
+        }
+      ]
+    },
+    {
+      "title": "FIFA 23",
+      "type": "Deportes",
+      "users": [
+        {
+          "name": "Carlos Martínez",
+          "username": "carlosmartinez"
+        },
+        {
+          "name": "Ana López",
+          "username": "anaLopez"
+        },
+        {
+          "name": "José Fernández",
+          "username": "josefernandez"
+        }
+      ]
+    },
+    {
+      "title": "Devil May Cry",
+      "type": "Acción",
+      "users": [
+        {
+          "name": "Carlos Martínez",
+          "username": "carlosmartinez"
+        },
+        {
+          "name": "Ana López",
+          "username": "anaLopez"
+        },
+        {
+          "name": "José Fernández",
+          "username": "josefernandez"
+        }
+      ]
+    },
+    {
+      "title": "Metro 2033",
+      "type": "Acción",
+      "users": [
+        {
+          "name": "Carlos Martínez",
+          "username": "carlosmartinez"
+        },
+        {
+          "name": "Ana López",
+          "username": "anaLopez"
+        },
+        {
+          "name": "José Fernández",
+          "username": "josefernandez"
+        }
+      ]
+    }
+  ]
+  
