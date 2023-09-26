@@ -49,15 +49,6 @@
   border-radius: 50%;
 }
 
-.fancyUnderline {
-  text-decoration: underline;
-  text-decoration-color: #9e1f63;
-  text-decoration-thickness: 2px;
-  bottom: -10px;
-  left: 0;
-  height: 7px;
-}
-
 .access {
   display: flex;
   gap: 16px;
@@ -192,17 +183,56 @@
 .gamesList {
   overflow-y: auto;
   overflow-x: hidden;
-  scroll-behavior: smooth;
-  scrollbar-width: 2px;
   display: flex;
   flex-direction: column;
   gap: 16px;
   height: 128px;
+  width: 100%;
 }
+
+.gamesList::-webkit-scrollbar {
+  width: 5px;
+}
+
+.gamesList::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.gamesList::-webkit-scrollbar-thumb {
+  background: #999;
+}
+
+.gamesList::-webkit-scrollbar-thumb:hover {
+  background: #bbb;
+}
+
 
 .gamesListRow {
   display: flex;
-  gap: 4px;
+  align-items: center;
+  gap: 12px;
+  width: max-content;
+}
+
+.roomNumber {
+  font-size: 14px;
+  border-radius: 12px;
+  background-color: #000;
+  color: white;
+  width: 24px;
+  height: 24px;
+  text-align: center;
+  padding-top: 2px;
+
+}
+
+.roomName {
+  font-size: 14px;
+}
+
+.listAvatar {
+  width: 24px;
+  height: 24px;
 }
 
 .btnRectDark {

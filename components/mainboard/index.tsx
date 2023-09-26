@@ -2,61 +2,73 @@
 
 import styles from './styles.module.css'
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
-import { User, Game } from '@/libs/interfaces'
+import { ChangeEvent, useEffect, useState } from 'react'
 import { Equalizer } from '@styled-icons/remix-line/'
 import { MouseEvent } from 'react'
-import data from '@/app/data/games.json'
+import { Room, Game } from '@/libs/gameroom'
+import Select from 'react-select'
+import { SingleValue, ActionMeta } from 'react-select'
 
-export default function MainBoard() {
+interface ISelectOption {
+    label: string
+    value: string
+}
 
-    const [fsOpened, setFsOpened] = useState(false)
-    const [gamesList, setGamesList] = useState<Game[]>([])
-    const [keys, setKeys] = useState<string[]>([])
+export default function MainBoard({ rooms }: { rooms: Room[] }) {
+
     const [platform, setPlatform] = useState('Party')
-
+    const [search, setSearch] = useState("")
+    const [searchResults, setSearchResults] = useState<Room[]>(rooms)
+    const [games, setGames] = useState<ISelectOption[]>([])
 
     useEffect(
         () => {
-            /*getData().then(
-                (data) => {
-                    const games: Game[] = []
-
-                    for (let i=0; i<data.length; i++) {
-
-                        const item = data[i]
-
-                        if (!item) {
-                            continue
-                        }
-
-                        const users: User[] = []
-
-                        for (let u of item.users) {
-                            const user = new User(u.name, u.username)
-                            users.push(user)
-                        }
-
-                        const game = new Game(item.title, item.type, item.platform, users )
+            const games: ISelectOption[] = []
+            rooms.forEach(
+                (room) => games.push(
+                    {
+                        label: room.game.name,
+                        value: room.game.name
                     }
-
-                    setGamesList(games)
+                )
+            )
+            setGames(games.sort(
+                (a, b) => {
+                    if(a.label < b.label) { return -1; }
+                    if(a.label > b.label) { return 1; }
+                    return 0;
                 }
-            )*/
-            setGamesList([...data])
-
-            console.log(JSON.stringify(gamesList))
+            ))
         },
-        []
+        [rooms]
     )
 
-    function searchGame(gameTitle: string) {
-        //pass
+    function searchGame() {
+        console.log("SEARCH: " + JSON.stringify(search))
+
+        if (search.length > 1) {
+            const res = rooms.filter(
+                (room) => room.game.name.includes(search) // && room.game.category === platform
+            )
+            setSearchResults(res)
+
+            console.log("RESULT: " + JSON.stringify(res))
+        }
     }
 
     function selectPlatform(e: MouseEvent<HTMLElement>) {
-        //alert(e.currentTarget.innerText)
         setPlatform(e.currentTarget.innerText)
+    }
+
+    function handleChange(newValue: SingleValue<ISelectOption>, actionMeta: ActionMeta<ISelectOption>) {
+
+        if (!newValue) {
+            return
+        }
+
+        setSearch(newValue.label)
+
+        console.log(search.length)
     }
 
     return (
@@ -103,29 +115,25 @@ export default function MainBoard() {
                     </div>
                     <div className={styles.searchContainer}>
                         <div className={styles.searchHeader}>
-                            <input type='text' className={styles.searchBox} placeholder='COD Warzone' />
+                            <Select id='searchbox' options={games} className={styles.searchBox} placeholder={games && games.length ? games[0].label : ''} onChange={handleChange} />
                             <div className={styles.filtersContainer}>
-                                <button onClick={() => setFsOpened(!fsOpened)}>
+                                <button onClick={searchGame}>
                                     <Equalizer className={styles.filterBtn} width={24} height={24} color='black' />
                                 </button>
                             </div>
                         </div>
-                        {
-                            fsOpened && <div className={styles.filtersSelector}>
-
-                            </div>
-                        }
                         <div className={styles.gamesList}>
                             {
-                                gamesList && gamesList.map(
-                                    (game) => <div key={game.title} className={styles.gamesListRow}>
+                                searchResults && searchResults.map(
+                                    (room, i) => <div key={room.name} className={styles.gamesListRow}>
+                                        <span className={styles.roomNumber}>{i}</span>
+                                        <strong className={styles.roomName}>{room.name}</strong>
                                         {
-                                            game.users.map(
-                                                (user) => <Image key={user.username} src={`/users/${user.username}.png`} width={32} height={32} alt={`Avatar de ${user.name}`} />
+                                            room.members.map(
+                                                (member) => <Image className={styles.listAvatar} key={member} src={`/users/${member}.png`} width={24} height={24} alt={`Avatar de ${member}`} />
                                             )
                                         }
                                     </div>
-
                                 )
                             }
                         </div>

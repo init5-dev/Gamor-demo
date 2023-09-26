@@ -1,5 +1,3 @@
-type GameType = "Acción" | "Aventura" | "Deportes" | "Estrategia" | "Rol" | "Simuladores" | "Casuales" | "Multijugador"
-type Platform = "Party" | "Match" | "Stream"
 
 export interface User {
     name: string 

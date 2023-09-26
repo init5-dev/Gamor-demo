@@ -1,0 +1,132 @@
+[
+  {
+    "name": "Prxris",
+    "platform": "Party",
+    "game": {
+      "name": "Fortnite",
+      "category": "Action"
+    },
+    "members": [
+      "Ninja",
+      "Tfue",
+      "Sykkuno"
+    ]
+  },
+  {
+    "name": "Team Fight",
+    "platform": "Match",
+    "game": {
+      "name": "League of Legends",
+      "category": "Strategy"
+    },
+    "members": [
+      "Faker",
+      "Uzi",
+      "Perkz"
+    ]
+  },
+  {
+    "name": "Xikings",
+    "platform": "Stream",
+    "game": {
+      "name": "VALORANT",
+      "category": "FPS"
+    },
+    "members": [
+      "shroud",
+      "tenz",
+      "Asuna"
+    ]
+  },
+  {
+    "name": "Warzone Team",
+    "platform": "Party",
+    "game": {
+      "name": "Call of Duty: Modern Warfare II",
+      "category": "FPS"
+    },
+    "members": [
+      "Scump",
+      "Formal",
+      "Crimsix"
+    ]
+  },
+  {
+    "name": "Kill4All",
+    "platform": "Match",
+    "game": {
+      "name": "Dota 2",
+      "category": "Strategy"
+    },
+    "members": [
+      "Ceb",
+      "Ana",
+      "Topson"
+    ]
+  },
+  {
+    "name": "Streax",
+    "platform": "Stream",
+    "game": {
+      "name": "Minecraft",
+      "category": "Casual"
+    },
+    "members": [
+      "Dream",
+      "GeorgeNotFound",
+      "Sapnap"
+    ]
+  },
+  {
+    "name": "Rakuzu Team",
+    "platform": "Party",
+    "game": {
+      "name": "Among Us",
+      "category": "Casual"
+    },
+    "members": [
+      "CorpseHusband",
+      "RaeLilBlack",
+      "Sykkuno"
+    ]
+  },
+  {
+    "name": "World Army",
+    "platform": "Match",
+    "game": {
+      "name": "Counter-Strike: Global Offensive",
+      "category": "FPS"
+    },
+    "members": [
+      "s1mple",
+      "NiKo",
+      "dev1ce"
+    ]
+  },
+  {
+    "name": "RoomSX",
+    "platform": "Stream",
+    "game": {
+      "name": "Just Chatting",
+      "category": "Casual"
+    },
+    "members": [
+      "xQcOW",
+      "Amouranth",
+      "Pokimane"
+    ]
+  },
+  {
+    "name": "FallingG",
+    "platform": "Party",
+    "game": {
+      "name": "Fall Guys",
+      "category": "Casual"
+    },
+    "members": [
+      "Sykkuno",
+      "RaeLilBlack",
+      "Valkyrae"
+    ]
+  }
+]
