@@ -2,6 +2,7 @@
     {
       "title": "Call of Duty: Warzone",
       "type": "Acción",
+      "platform": "Party",
       "users": [
         {
           "name": "Juan Pérez",
@@ -20,6 +21,7 @@
     {
       "title": "Fortnite",
       "type": "Multijugador",
+      "platform": "Party",
       "users": [
         {
           "name": "Sofia Rodríguez",
@@ -38,6 +40,7 @@
     {
       "title": "FIFA 23",
       "type": "Deportes",
+      "platform": "Stream",
       "users": [
         {
           "name": "Carlos Martínez",
@@ -56,6 +59,7 @@
     {
       "title": "Devil May Cry",
       "type": "Acción",
+      "platform": "Match",
       "users": [
         {
           "name": "Carlos Martínez",
@@ -74,6 +78,7 @@
     {
       "title": "Metro 2033",
       "type": "Acción",
+      "platform": "Stream",
       "users": [
         {
           "name": "Carlos Martínez",

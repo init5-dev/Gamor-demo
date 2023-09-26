@@ -200,6 +200,11 @@
   height: 128px;
 }
 
+.gamesListRow {
+  display: flex;
+  gap: 4px;
+}
+
 .btnRectDark {
   color: #fff;
   background-color: #000;

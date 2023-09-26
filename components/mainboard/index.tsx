@@ -6,28 +6,46 @@ import { useEffect, useState } from 'react'
 import { User, Game } from '@/libs/interfaces'
 import { Equalizer } from '@styled-icons/remix-line/'
 import { MouseEvent } from 'react'
+import data from '@/app/data/games.json'
 
 export default function MainBoard() {
 
     const [fsOpened, setFsOpened] = useState(false)
     const [gamesList, setGamesList] = useState<Game[]>([])
-    const [keys, setKeys] = useState([])
+    const [keys, setKeys] = useState<string[]>([])
     const [platform, setPlatform] = useState('Party')
 
-    async function getData() {
-        const res = await import("@/data/games.json");
-        return res
-    }
 
     useEffect(
         () => {
-            getData().then(
+            /*getData().then(
                 (data) => {
-                    setGamesList(data)
-                    setKeys(Object.keys(data))
-                    console.log(JSON.stringify(data))
-                } 
-            )     
+                    const games: Game[] = []
+
+                    for (let i=0; i<data.length; i++) {
+
+                        const item = data[i]
+
+                        if (!item) {
+                            continue
+                        }
+
+                        const users: User[] = []
+
+                        for (let u of item.users) {
+                            const user = new User(u.name, u.username)
+                            users.push(user)
+                        }
+
+                        const game = new Game(item.title, item.type, item.platform, users )
+                    }
+
+                    setGamesList(games)
+                }
+            )*/
+            setGamesList([...data])
+
+            console.log(JSON.stringify(gamesList))
         },
         []
     )
@@ -99,10 +117,16 @@ export default function MainBoard() {
                         }
                         <div className={styles.gamesList}>
                             {
-                                gamesList && keys.map(
-                                    (key) => <div key={key}>{gamesList[key].title}</div>
-                                    
-                                ) 
+                                gamesList && gamesList.map(
+                                    (game) => <div key={game.title} className={styles.gamesListRow}>
+                                        {
+                                            game.users.map(
+                                                (user) => <Image key={user.username} src={`/users/${user.username}.png`} width={32} height={32} alt={`Avatar de ${user.name}`} />
+                                            )
+                                        }
+                                    </div>
+
+                                )
                             }
                         </div>
                         <div>
