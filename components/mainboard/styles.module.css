@@ -182,16 +182,23 @@
 
 .gamesList {
   overflow-y: auto;
-  overflow-x: hidden;
+  overflow-x: auto;
   display: flex;
   flex-direction: column;
   gap: 16px;
   height: 128px;
   width: 100%;
+  padding: 4px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.9),
+    0 2px 0 4px rgba(255, 255, 255, 0.6), 0 4px 0 6px rgba(255, 255, 255, 0.3);
 }
 
 .gamesList::-webkit-scrollbar {
   width: 5px;
+  height: 5px;
+  border-radius: 20px;
 }
 
 .gamesList::-webkit-scrollbar-track {
@@ -206,11 +213,11 @@
   background: #bbb;
 }
 
-
 .gamesListRow {
   display: flex;
   align-items: center;
   gap: 12px;
+  padding: 2px;
   width: max-content;
 }
 
@@ -223,16 +230,33 @@
   height: 24px;
   text-align: center;
   padding-top: 2px;
-
 }
 
 .roomName {
   font-size: 14px;
+  margin-right: 20px;
 }
 
 .listAvatar {
   width: 24px;
   height: 24px;
+  margin-left: -20px;
+}
+
+.btnAdd {
+  background-color: rgb(220, 220, 220);
+  border-radius: 4px;
+  font-weight: 500;
+  width: 24px;
+  height: 24px;
+}
+
+.btnAdd:hover {
+  background-color: rgb(200, 200, 200);
+}
+
+.btnAdd:active {
+  background-color: rgb(180, 180, 180);
 }
 
 .btnRectDark {
@@ -287,7 +311,6 @@
     width: 100%;
   }
 }
-
 
 .filterPopup {
   position: fixed;

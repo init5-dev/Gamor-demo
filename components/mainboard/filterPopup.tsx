@@ -14,17 +14,21 @@ export default function FilterPopup(
         }) {
 
     const [open, setOpen] = useState(true);
+    const [stateVal, setStateVal] = useState("all")
+    const [langVal, setLangVal] = useState("all")
 
     function selectState(newValue: SingleValue<ISelectOption>, actionMeta: ActionMeta<ISelectOption>) {
         if (newValue) {
             onEdit(newValue.label, undefined)
+            setStateVal(newValue.label)
         }
     }
 
     function selectLang(newValue: SingleValue<ISelectOption>, actionMeta: ActionMeta<ISelectOption>) {
         if (newValue) {
             onEdit(undefined, newValue.label)
-        }
+            setLangVal(newValue.label)
+        } 
     }
 
     return (
@@ -40,15 +44,15 @@ export default function FilterPopup(
                     <Select
                         id='state-select'
                         options={states}
-                        placeholder="Estado"
-                        value={defaultState}
+                        placeholder={defaultState.label}
+                        value={{label:stateVal, value:stateVal}}
                         onChange={selectState}
                     />
                     <Select
                         id='language-select'
                         options={languages}
-                        placeholder="Idioma"
-                        value={defaultLanguage}
+                        value={{label:langVal, value:langVal}}
+                        placeholder={defaultState.label}
                         onChange={selectLang}
                     />
                 </div>

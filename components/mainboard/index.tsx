@@ -76,14 +76,15 @@ export default function MainBoard({ rooms }: { rooms: Room[] }) {
     function searchGame() {
         console.log("SEARCH: " + JSON.stringify(search))
 
-        if (search.length > 1) {
+        if (search.length) {
             const res = rooms.filter(
-                (room) => room.game.name.includes(search) && room.platform === platform && room.state === state && room.language === language
+                (room) => (room.game.name.includes(search) || search.trim() === "") && room.platform === platform && (room.state === state || state === "all") && (room.language === language || language === "all")
             )
             setSearchResults(res)
-
+            console.log("STATE: " + state)
+            console.log("LANG: " + language)
             console.log("RESULT: " + JSON.stringify(res))
-        }
+        } 
     }
 
     function selectPlatform(e: MouseEvent<HTMLElement>) {
@@ -182,6 +183,7 @@ export default function MainBoard({ rooms }: { rooms: Room[] }) {
                                                 (member) => <Image className={styles.listAvatar} key={member} src={`/users/${member}.png`} width={24} height={24} alt={`Avatar de ${member}`} />
                                             )
                                         }
+                                        <button className={styles.btnAdd}>+</button>
                                     </div>
                                 )
                             }

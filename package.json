@@ -19,6 +19,7 @@
     "fs": "^0.0.1-security",
     "fs.promises": "^0.1.2",
     "next": "13.4.19",
+    "next-auth": "^4.23.1",
     "postcss": "8.4.28",
     "react": "18.2.0",
     "react-dom": "18.2.0",
