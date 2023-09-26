@@ -10,7 +10,9 @@
       "Ninja",
       "Tfue",
       "Sykkuno"
-    ]
+    ],
+    "state": "active",
+    "language": "en"
   },
   {
     "name": "Team Fight",
@@ -23,7 +25,9 @@
       "Faker",
       "Uzi",
       "Perkz"
-    ]
+    ],
+    "state": "active",
+    "language": "es"
   },
   {
     "name": "Xikings",
@@ -36,7 +40,9 @@
       "shroud",
       "tenz",
       "Asuna"
-    ]
+    ],
+    "state": "active",
+    "language": "en"
   },
   {
     "name": "Warzone Team",
@@ -49,7 +55,9 @@
       "Scump",
       "Formal",
       "Crimsix"
-    ]
+    ],
+    "state": "inactive",
+    "language": "en"
   },
   {
     "name": "Kill4All",
@@ -62,7 +70,9 @@
       "Ceb",
       "Ana",
       "Topson"
-    ]
+    ],
+    "state": "inactive",
+    "language": "fr"
   },
   {
     "name": "Streax",
@@ -75,7 +85,9 @@
       "Dream",
       "GeorgeNotFound",
       "Sapnap"
-    ]
+    ],
+    "state": "active",
+    "language": "fr"
   },
   {
     "name": "Rakuzu Team",
@@ -88,7 +100,9 @@
       "CorpseHusband",
       "RaeLilBlack",
       "Sykkuno"
-    ]
+    ],
+    "state": "inactive",
+    "language": "es"
   },
   {
     "name": "World Army",
@@ -102,6 +116,9 @@
       "NiKo",
       "dev1ce"
     ]
+    ,
+    "state": "active",
+    "language": "ch"
   },
   {
     "name": "RoomSX",
@@ -114,7 +131,9 @@
       "xQcOW",
       "Amouranth",
       "Pokimane"
-    ]
+    ],
+    "state": "active",
+    "language": "ch"
   },
   {
     "name": "FallingG",
@@ -127,6 +146,8 @@
       "Sykkuno",
       "RaeLilBlack",
       "Valkyrae"
-    ]
+    ],
+    "state": "inactive",
+    "language": "en"
   }
 ]

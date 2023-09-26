@@ -7,12 +7,14 @@ import { Equalizer } from '@styled-icons/remix-line/'
 import { MouseEvent } from 'react'
 import { Room, Game } from '@/libs/gameroom'
 import Select from 'react-select'
+import { ISelectOption } from '@/libs/interfaces'
 import { SingleValue, ActionMeta } from 'react-select'
+import FilterPopup from './filterPopup'
 
-interface ISelectOption {
-    label: string
-    value: string
-}
+const roomStates = ['active', 'inactive', 'all']
+const defState = { label: 'all', value: 'all' }
+const availableLangs = ['en', 'es', 'ch', 'fr', 'it', 'all']
+const defLang = { label: 'all', value: 'all' }
 
 export default function MainBoard({ rooms }: { rooms: Room[] }) {
 
@@ -20,27 +22,55 @@ export default function MainBoard({ rooms }: { rooms: Room[] }) {
     const [search, setSearch] = useState("")
     const [searchResults, setSearchResults] = useState<Room[]>(rooms)
     const [games, setGames] = useState<ISelectOption[]>([])
+    const [showFilter, setShowFilter] = useState(false)
+    const [state, setState] = useState<string>("all")
+    const [states, setStates] = useState<ISelectOption[]>([])
+    const [language, setLanguage] = useState<string>("all")
+    const [languages, setLanguages] = useState<ISelectOption[]>([])
 
     useEffect(
         () => {
             const games: ISelectOption[] = []
+
             rooms.forEach(
-                (room) => games.push(
-                    {
-                        label: room.game.name,
-                        value: room.game.name
-                    }
-                )
+                (room) => {
+                    games.push(
+                        {
+                            label: room.game.name,
+                            value: room.game.name
+                        }
+                    )
+                }
             )
             setGames(games.sort(
                 (a, b) => {
-                    if(a.label < b.label) { return -1; }
-                    if(a.label > b.label) { return 1; }
+                    if (a.label < b.label) { return -1; }
+                    if (a.label > b.label) { return 1; }
                     return 0;
                 }
             ))
+
+            const states: ISelectOption[] = []
+            const languages: ISelectOption[] = []
+
+            for (let item of roomStates) {
+                states.push({
+                    label: item,
+                    value: item
+                })
+            }
+
+            for (let item of availableLangs) {
+                languages.push({
+                    label: item,
+                    value: item
+                })
+            }
+
+            setStates(states)
+            setLanguages(languages)
         },
-        [rooms]
+        []
     )
 
     function searchGame() {
@@ -48,7 +78,7 @@ export default function MainBoard({ rooms }: { rooms: Room[] }) {
 
         if (search.length > 1) {
             const res = rooms.filter(
-                (room) => room.game.name.includes(search) // && room.game.category === platform
+                (room) => room.game.name.includes(search) && room.platform === platform && room.state === state && room.language === language
             )
             setSearchResults(res)
 
@@ -71,6 +101,15 @@ export default function MainBoard({ rooms }: { rooms: Room[] }) {
         console.log(search.length)
     }
 
+    function getFilters(stateArg: string | undefined = undefined, languageArg: string | undefined = undefined) {
+        if (stateArg) {
+            setState(stateArg)
+        }
+        if (languageArg) {
+            setLanguage(languageArg)
+        }
+    }
+
     return (
         <div className={styles.mainBoard}>
             <div className={styles.boardSection}>
@@ -78,7 +117,7 @@ export default function MainBoard({ rooms }: { rooms: Room[] }) {
                     <p>start <span className={styles.resalted}>streaming</span> games differently</p>
                 </div>
                 <div className={styles.notice}>
-                    <p>gamor no has <span className={styles.underlined}>stream party</span> platform</p>
+                    <p>gamor now has <span className={styles.underlined}>stream party</span> platform</p>
                 </div>
                 <div className={styles.access}>
                     <button className={styles.btnRoundWhite}>Create account</button>
@@ -117,11 +156,21 @@ export default function MainBoard({ rooms }: { rooms: Room[] }) {
                         <div className={styles.searchHeader}>
                             <Select id='searchbox' options={games} className={styles.searchBox} placeholder={games && games.length ? games[0].label : ''} onChange={handleChange} />
                             <div className={styles.filtersContainer}>
-                                <button onClick={searchGame}>
+                                <button onClick={() => { setShowFilter(!showFilter) }}>
                                     <Equalizer className={styles.filterBtn} width={24} height={24} color='black' />
                                 </button>
                             </div>
                         </div>
+                        {
+                            showFilter && <FilterPopup
+                                languages={languages}
+                                states={states}
+                                defaultLanguage={defLang}
+                                defaultState={defState}
+                                onEdit={getFilters}
+                                onClose={() => setShowFilter(false)}
+                            />
+                        }
                         <div className={styles.gamesList}>
                             {
                                 searchResults && searchResults.map(
@@ -138,7 +187,7 @@ export default function MainBoard({ rooms }: { rooms: Room[] }) {
                             }
                         </div>
                         <div>
-                            <button className={styles.btnRectDark} onClick={() => { }}>Search Now</button>
+                            <button className={styles.btnRectDark} onClick={searchGame}>Search Now</button>
                         </div>
                     </div>
                 </div>

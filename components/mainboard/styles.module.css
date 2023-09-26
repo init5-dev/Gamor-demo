@@ -287,3 +287,33 @@
     width: 100%;
   }
 }
+
+
+.filterPopup {
+  position: fixed;
+  top: 0.5vh;
+  left: 0.5vw;
+  width: 256px;
+  padding: 16px;
+  background-color: #ddd;
+  border-radius: 16px;
+  box-shadow: 1px 1px 1px black;
+}
+
+.filterSelectGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+}
+
+.closeBtn {
+  position: relative;
+  top: -12px;
+  left: 96%;
+  width: 24px;
+  height: 24px;
+  align-items: center;
+  justify-content: center;
+}

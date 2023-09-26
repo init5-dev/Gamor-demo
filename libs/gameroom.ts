@@ -6,6 +6,8 @@ export interface IRoom {
     platform: string
     game: Game
     members: string[]
+    state: string
+    language: string
 }
 
 export interface IGame {
@@ -18,12 +20,16 @@ export class Room implements IRoom {
     platform: string
     game: Game
     members: string[]
+    state: string
+    language: string
 
-    constructor(name: string, platform: string, game: Game, members: string[]) {
+    constructor(name: string, platform: string, game: Game, members: string[], state: string, language: string) {
         this.name = name
         this.platform = platform
         this.game = game
         this.members = members
+        this.state = state
+        this.language = language
     }
 }
 
