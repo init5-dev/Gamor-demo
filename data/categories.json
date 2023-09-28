@@ -1,0 +1,47 @@
+[
+    {
+        "id": "1",
+        "name": "Action",
+        "imgPath": "/media/categories/Action.jpg"
+    },
+    {
+        "id": "2",
+        "name": "Adventure",
+        "imgPath": "/media/categories/Adventure.jpg"
+    },
+    {
+        "id": "3",
+        "name": "Fantasy",
+        "imgPath": "/media/categories/Fantasy.jpg"
+    },
+    {
+        "id": "4",
+        "name": "Sports",
+        "imgPath": "/media/categories/Sports.jpg"
+    },
+    {
+        "id": "5",
+        "name": "Strategy",
+        "imgPath": "/media/categories/Strategy.jpg"
+    },
+    {
+        "id": "6",
+        "name": "Role-Playing",
+        "imgPath": "/media/categories/Role-Playing.jpg"
+    },
+    {
+        "id": "7",
+        "name": "Simulation",
+        "imgPath": "/media/categories/Simulation.jpg"
+    },
+    {
+        "id": "8",
+        "name": "Casual",
+        "imgPath": "/media/categories/Casual.jpg"
+    },
+    {
+        "id": "9",
+        "name": "FPS",
+        "imgPath": "/media/categories/FPS.jpg"
+    }
+]

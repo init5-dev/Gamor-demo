@@ -25,7 +25,7 @@ export default function MainBoard({ rooms }: { rooms: Room[] }) {
 
     const [platform, setPlatform] = useState('Party')
     const [search, setSearch] = useState("")
-    const [searchResults, setSearchResults] = useState<Room[]>(rooms)
+    const [searchResults, setSearchResults] = useState<Room[]>([])
     const [game, setGame] = useState<string>('')
     const [games, setGames] = useState<ISelectOption[]>([])
     const [showFilter, setShowFilter] = useState(false)
@@ -37,7 +37,7 @@ export default function MainBoard({ rooms }: { rooms: Room[] }) {
     const [joinedRoom, setJoinedRoom] = useState<Room[] | null>(null)
     const [imgPath, setImgPath] = useState('')
 
-    const [alert, setAlert] = useState({
+    const [attention, setAttention] = useState({
         active: false,
         message: ''
     })
@@ -165,28 +165,67 @@ export default function MainBoard({ rooms }: { rooms: Room[] }) {
 
     function addUser(e: React.MouseEvent<HTMLElement>) {
 
-        if (!isLoaded || !isSignedIn || !user) {
-            setAlert({
+        if (!isSignedIn) {
+            setAttention({
                 active: true,
                 message: 'Please log in to join',
             })
             return
         }
 
-        setJoinedRoom(rooms.filter(
-            (room) => room.name == e.currentTarget.id
-        ))
-
-        setAdded(!added)
-        e.currentTarget.textContent = !added ? '-' : '+'
-
-        /*if (joinedRoom) { 
-            alert("JOINED TO: " + joinedRoom[0].name)
-        } else {
-            alert("Join failed. Room: " + e.currentTarget.id)
+        if (joinedRoom) {
+            if (joinedRoom[0].name.indexOf(e.currentTarget.id) < 0) {
+                return
+            }
         }
 
-        console.log("e.currentTarget.id: " + e.currentTarget.id)*/
+        if (e.currentTarget.textContent === '-') {
+            setAdded(false)
+            setJoinedRoom(null)
+            setAttention({
+                active: true,
+                message: 'Bye!'
+            })
+            return
+        }
+
+        const roomToJoin = rooms.filter(
+            (room) => {
+                console.log("room.name: " + room.name)
+                console.log("e.currentTarget.id: " + e.currentTarget.id)
+                return room.name.indexOf(e.currentTarget.id) > -1
+            }
+        )
+        console.log(roomToJoin)
+        setJoinedRoom(roomToJoin)
+
+        if (roomToJoin.length) {
+            setAdded(true)
+            e.currentTarget.textContent = '-'
+            setAttention({
+                active: true,
+                message: 'You have joined ' + roomToJoin[0].name
+            })
+            return
+        }
+        /*e.currentTarget.textContent = !added ? '-' : '+'
+        if(added) {
+            setAttention({
+                active: true,
+                message: 'You have joined ' + joinedRoom[0].name
+            })
+        } else {
+            setAttention({
+                active: true,
+                message: 'Bye!'
+            })
+        }
+    } else {
+        setAttention({
+            active: true,
+            message: 'Attempt to join failed'
+        })
+    }   */
     }
 
     function getFilters(stateArg: string | undefined = undefined, languageArg: string | undefined = undefined) {
@@ -201,7 +240,7 @@ export default function MainBoard({ rooms }: { rooms: Room[] }) {
     return (
         <div className={styles.mainBoard}>
             {
-                alert.active && <Alert message={alert.message} onClose={()=>setAlert({active:false, message:''})} />
+                attention.active && <Alert message={attention.message} onClose={() => setAttention({ active: false, message: '' })} />
             }
             <div className={styles.boardSection}>
                 <div className={styles.lemma}>
@@ -271,7 +310,7 @@ export default function MainBoard({ rooms }: { rooms: Room[] }) {
                         }
                         <div className={styles.gamesList}>
                             {
-                                searchResults && searchResults.map(
+                                searchResults.length ? searchResults.map(
                                     (room, i) => <div key={room.name} className={styles.gamesListRow}>
                                         <span className={styles.roomNumber}>{i}</span>
                                         <strong className={styles.roomName}>{room.name}</strong>
@@ -282,11 +321,11 @@ export default function MainBoard({ rooms }: { rooms: Room[] }) {
                                         }
                                         <button id={room.name} className={styles.btnAdd} onClick={addUser}>+</button>
                                     </div>
-                                )
+                                ) : <div className={styles.nothingHere}>Nothing here!</div>
                             }
                         </div>
                         <div>
-                            <button className={styles.btnRectDark} onClick={searchGame}>Search Now</button>
+                            <button className={search ? styles.btnRectDark : styles.btnRectDarkDisabled} disabled={search ? false : true} onClick={searchGame}>Search Now</button>
                         </div>
                     </div>
                 </div>

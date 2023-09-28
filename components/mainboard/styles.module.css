@@ -44,8 +44,8 @@
   left: 0;
   height: 7px;
   width: 100%;
-  border: solid 2px #9e1f63;
-  border-color: #9e1f63 transparent transparent transparent;
+  border: solid 2px #7F00FF;
+  border-color: #7F00FF transparent transparent transparent;
   border-radius: 50%;
 }
 
@@ -64,7 +64,7 @@
 }
 
 .btnRoundWhite:hover {
-  background-color: #9e1f63;
+  background-color: #7F00FF;
   color: white;
 }
 
@@ -80,7 +80,7 @@
 }
 
 .link:hover {
-  color: #9e1f63;
+  color: #7F00FF;
 }
 
 .link:active {
@@ -137,7 +137,7 @@
 .clock {
   z-index: 10;
   background-color: white;
-  color: #9e1f63;
+  color: #7F00FF;
   font-size: medium;
   width: 84px;
   padding: 4px 8px;
@@ -237,7 +237,7 @@
 }
 
 .filterBtn:hover {
-  background-color: #9e1f63;
+  background-color: #7F00FF;
   color: #fff;
 }
 
@@ -342,49 +342,18 @@
 }
 
 .btnRectDark:hover {
-  background-color: #9e1f63;
+  background-color: #7F00FF;
 }
 
 .btnRectDark:active {
   background-color: #e43090;
 }
 
-@media only screen and (max-width: 934px) {
-  .mainBoard {
-    width: 90%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .boardSection {
-    background-color: transparent;
-    padding: 0 16px;
-    display: flex;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 16px;
-    width: 100%;
-    height: 450px;
-  }
-
-  .access {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .boardSectionWithBg {
-    background-color: transparent;
-    display: flex;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    height: 450px;
-    width: 100%;
-  }
+.btnRectDarkDisabled {
+  color: #fff;
+  background-color: #aaa;
+  padding: 8px 16px;
+  border-radius: 8px;
 }
 
 .filterPopup {
@@ -398,6 +367,13 @@
   border-radius: 16px;
   box-shadow: 1px 1px 1px 2px rgba(100, 100, 100, 0.2);
   z-index: 100;
+}
+
+.nothingHere{
+  text-align: center;
+  width: 100%;
+  color:#555;
+  margin-top: 20%;
 }
 
 .alert {
@@ -458,4 +434,63 @@
 
 .alertCloseBtn:hover {
   background-color:#888
+}
+
+@media only screen and (max-width: 934px) {
+  .mainBoard {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .boardSection {
+    background-color: transparent;
+    padding: 0 16px;
+    display: flex;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px;
+    width: 100%;
+    height: 450px;
+  }
+
+  .access {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .boardSectionWithBg {
+    background-color: transparent;
+    display: flex;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    height: 450px;
+    width: 100%;
+  }
+
+  .filterPopup {
+    position: fixed;
+    width: 256px;
+    padding: 16px;
+    background-color: #ddd;
+    border-radius: 16px;
+    box-shadow: 1px 1px 1px 2px rgba(100, 100, 100, 0.2);
+    z-index: 100;
+  }
+  
+  .alert {
+    position: fixed;
+    width: 256px;
+    padding: 16px;
+    background-color: #ddd;
+    border-radius: 16px;
+    box-shadow: 1px 1px 1px 2px rgba(100, 100, 100, 0.2);
+    z-index: 100;
+    text-align: center;
+  }
 }
