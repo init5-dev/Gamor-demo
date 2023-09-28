@@ -87,16 +87,6 @@
   color: #e43090;
 }
 
-/*.bgImage {
-  background: url('../../public/media/call-of-duty-cover-portrait.jpg') white;
-  image-rendering: optimizeQuality;
-  height: 100%;
-  width: 100%;
-  background-size: cover;
-  background-repeat: none;
-  padding: 32px;
-}*/
-
 .bgImage {
   position: relative;
   image-rendering: optimizeQuality;
@@ -407,6 +397,21 @@
   background-color: #ddd;
   border-radius: 16px;
   box-shadow: 1px 1px 1px 2px rgba(100, 100, 100, 0.2);
+  z-index: 100;
+}
+
+.alert {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 256px;
+  padding: 16px;
+  background-color: #ddd;
+  border-radius: 16px;
+  box-shadow: 1px 1px 1px 2px rgba(100, 100, 100, 0.2);
+  z-index: 100;
+  text-align: center;
 }
 
 .filterSelectGroup {
@@ -425,4 +430,32 @@
   height: 24px;
   align-items: center;
   justify-content: center;
+  border-radius: 12px;
+}
+
+.closeBtn:hover {
+  background-color:#bbb
+}
+
+.closeBtn:hover {
+  background-color:#888
+}
+
+.alertCloseBtn {
+  position: relative;
+  top: -12px;
+  left: 50%;
+  width: 24px;
+  height: 24px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+}
+
+.alertCloseBtn:hover {
+  background-color:#bbb
+}
+
+.alertCloseBtn:hover {
+  background-color:#888
 }

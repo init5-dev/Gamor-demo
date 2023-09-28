@@ -8,11 +8,13 @@ import { MouseEvent } from 'react'
 import { Room, Game } from '@/libs/gameroom'
 import Select from 'react-select'
 import { ISelectOption } from '@/libs/interfaces'
-import { SingleValue, ActionMeta,InputActionMeta } from 'react-select'
+import { SingleValue, ActionMeta, InputActionMeta } from 'react-select'
 import FilterPopup from './filterPopup'
 import Link from 'next/link'
 import Clock from './clock'
 import UserBall from './userball'
+import { useUser } from '@clerk/nextjs'
+import Alert from './alert'
 
 const roomStates = ['active', 'inactive', 'all']
 const defState = { label: 'all', value: 'all' }
@@ -24,6 +26,7 @@ export default function MainBoard({ rooms }: { rooms: Room[] }) {
     const [platform, setPlatform] = useState('Party')
     const [search, setSearch] = useState("")
     const [searchResults, setSearchResults] = useState<Room[]>(rooms)
+    const [game, setGame] = useState<string>('')
     const [games, setGames] = useState<ISelectOption[]>([])
     const [showFilter, setShowFilter] = useState(false)
     const [state, setState] = useState<string>("all")
@@ -33,6 +36,24 @@ export default function MainBoard({ rooms }: { rooms: Room[] }) {
     const [added, setAdded] = useState<boolean>(false)
     const [joinedRoom, setJoinedRoom] = useState<Room[] | null>(null)
     const [imgPath, setImgPath] = useState('')
+
+    const [alert, setAlert] = useState({
+        active: false,
+        message: ''
+    })
+
+    const [imgStyle, setImgStyle] = useState<React.CSSProperties>(
+        {
+            backgroundImage: `url('../../public/media/call-of-duty-cover-portrait.jpg')`,
+            height: `100%`,
+            width: `100%`,
+            backgroundSize: `cover`,
+            backgroundRepeat: `none`,
+            padding: `32px`,
+        }
+    )
+
+    const { isLoaded, isSignedIn, user } = useUser();
 
     useEffect(
         () => {
@@ -75,10 +96,31 @@ export default function MainBoard({ rooms }: { rooms: Room[] }) {
 
             setStates(states)
             setLanguages(languages)
+            setGame(games[0].label)
             setImgPath('/media/' + games[0].label + '.jpg')
         },
         []
     )
+
+    useEffect(
+        () => {
+            updateImgStyle()
+        },
+        [imgPath]
+    )
+
+    function updateImgStyle() {
+        const imgstyle: React.CSSProperties = {
+            backgroundImage: `url('${imgPath}')`,
+            height: `100%`,
+            width: `100%`,
+            backgroundSize: `cover`,
+            backgroundRepeat: `none`,
+            padding: `32px`,
+        }
+        setImgStyle(imgstyle)
+        console.log('IMAGE PATH: ' + imgPath)
+    }
 
     function searchGame() {
         console.log("SEARCH: " + JSON.stringify(search))
@@ -105,20 +147,32 @@ export default function MainBoard({ rooms }: { rooms: Room[] }) {
         }
 
         setSearch(newValue.label)
-        const tmp = "" + imgPath
-        setImgPath('/media/' + (newValue.label ? newValue.label : tmp) + '.jpg')
+        setImgPath('/media/' + newValue.label + '.jpg')
+        updateImgStyle()
 
         console.log(search.length)
     }
 
     function handleInputChange(newValue: string, actionMeta: InputActionMeta) {
+        if (!newValue) {
+            return
+        }
         setSearch(newValue)
         const tmp = "" + imgPath
-        setImgPath('/media/' + (newValue ? newValue : tmp) + '.jpg')
+        setImgPath('/media/' + newValue + '.jpg')
+        updateImgStyle()
     }
 
     function addUser(e: React.MouseEvent<HTMLElement>) {
-        
+
+        if (!isLoaded || !isSignedIn || !user) {
+            setAlert({
+                active: true,
+                message: 'Please log in to join',
+            })
+            return
+        }
+
         setJoinedRoom(rooms.filter(
             (room) => room.name == e.currentTarget.id
         ))
@@ -146,6 +200,9 @@ export default function MainBoard({ rooms }: { rooms: Room[] }) {
 
     return (
         <div className={styles.mainBoard}>
+            {
+                alert.active && <Alert message={alert.message} onClose={()=>setAlert({active:false, message:''})} />
+            }
             <div className={styles.boardSection}>
                 <div className={styles.lemma}>
                     <p>start <span className={styles.resalted}>streaming</span> games differently</p>
@@ -163,10 +220,9 @@ export default function MainBoard({ rooms }: { rooms: Room[] }) {
                 </div>
             </div>
             <div className={styles.boardSectionWithBg}>
-                <div className={styles.bgImage}>
-                    <Image src={imgPath} width={100} height={100} alt={search} />
+                <div className={styles.bgImage} style={imgStyle}>
                     <div className={styles.ad}>
-                        <p className={styles.adTitle}>CoD New Season</p>
+                        <p className={styles.adTitle}>{game}</p>
                         <p className={styles.adSubtitle}>Join Live Stream</p>
                     </div>
                     <div className={styles.clockSection}>
