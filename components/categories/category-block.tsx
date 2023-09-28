@@ -25,7 +25,7 @@ export default function CategoryBlock({ category }: { category: Category }) {
 
     const [mobile, setMobile] = useState(false)
     const [focused, setFocused] = useState(false)
-    const [imgStyle, setImgStyle] = useState<React.CSSProperties>(imageBgStyle)
+    const [imgStyle, setImgStyle] = useState<React.CSSProperties>(solidBgStyle)
 
     function handleMouseEnter() {
         if (!mobile) {
