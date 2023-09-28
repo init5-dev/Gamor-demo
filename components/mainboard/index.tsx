@@ -8,9 +8,11 @@ import { MouseEvent } from 'react'
 import { Room, Game } from '@/libs/gameroom'
 import Select from 'react-select'
 import { ISelectOption } from '@/libs/interfaces'
-import { SingleValue, ActionMeta } from 'react-select'
+import { SingleValue, ActionMeta,InputActionMeta } from 'react-select'
 import FilterPopup from './filterPopup'
 import Link from 'next/link'
+import Clock from './clock'
+import UserBall from './userball'
 
 const roomStates = ['active', 'inactive', 'all']
 const defState = { label: 'all', value: 'all' }
@@ -28,6 +30,9 @@ export default function MainBoard({ rooms }: { rooms: Room[] }) {
     const [states, setStates] = useState<ISelectOption[]>([])
     const [language, setLanguage] = useState<string>("all")
     const [languages, setLanguages] = useState<ISelectOption[]>([])
+    const [added, setAdded] = useState<boolean>(false)
+    const [joinedRoom, setJoinedRoom] = useState<Room[] | null>(null)
+    const [imgPath, setImgPath] = useState('')
 
     useEffect(
         () => {
@@ -70,6 +75,7 @@ export default function MainBoard({ rooms }: { rooms: Room[] }) {
 
             setStates(states)
             setLanguages(languages)
+            setImgPath('/media/' + games[0].label + '.jpg')
         },
         []
     )
@@ -99,8 +105,34 @@ export default function MainBoard({ rooms }: { rooms: Room[] }) {
         }
 
         setSearch(newValue.label)
+        const tmp = "" + imgPath
+        setImgPath('/media/' + (newValue.label ? newValue.label : tmp) + '.jpg')
 
         console.log(search.length)
+    }
+
+    function handleInputChange(newValue: string, actionMeta: InputActionMeta) {
+        setSearch(newValue)
+        const tmp = "" + imgPath
+        setImgPath('/media/' + (newValue ? newValue : tmp) + '.jpg')
+    }
+
+    function addUser(e: React.MouseEvent<HTMLElement>) {
+        
+        setJoinedRoom(rooms.filter(
+            (room) => room.name == e.currentTarget.id
+        ))
+
+        setAdded(!added)
+        e.currentTarget.textContent = !added ? '-' : '+'
+
+        /*if (joinedRoom) { 
+            alert("JOINED TO: " + joinedRoom[0].name)
+        } else {
+            alert("Join failed. Room: " + e.currentTarget.id)
+        }
+
+        console.log("e.currentTarget.id: " + e.currentTarget.id)*/
     }
 
     function getFilters(stateArg: string | undefined = undefined, languageArg: string | undefined = undefined) {
@@ -132,15 +164,16 @@ export default function MainBoard({ rooms }: { rooms: Room[] }) {
             </div>
             <div className={styles.boardSectionWithBg}>
                 <div className={styles.bgImage}>
+                    <Image src={imgPath} width={100} height={100} alt={search} />
                     <div className={styles.ad}>
                         <p className={styles.adTitle}>CoD New Season</p>
                         <p className={styles.adSubtitle}>Join Live Stream</p>
                     </div>
-                    <div className={styles.userBall}>
-
-                    </div>
-                    <div>
-                        {/*<CountDown />*/}
+                    <div className={styles.clockSection}>
+                        <div className={styles.userBallSection}>
+                            <UserBall added={added} />
+                        </div>
+                        <Clock />
                     </div>
                 </div>
             </div>
@@ -163,7 +196,7 @@ export default function MainBoard({ rooms }: { rooms: Room[] }) {
                     </div>
                     <div className={styles.searchContainer}>
                         <div className={styles.searchHeader}>
-                            <Select id='searchbox' options={games} className={styles.searchBox} placeholder={games && games.length ? games[0].label : ''} onChange={handleChange} />
+                            <Select id='searchbox' options={games} className={styles.searchBox} placeholder={games && games.length ? games[0].label : ''} onChange={handleChange} onInputChange={handleInputChange} />
                             <div className={styles.filtersContainer}>
                                 <button onClick={() => { setShowFilter(!showFilter) }}>
                                     <Equalizer className={styles.filterBtn} width={24} height={24} color='black' />
@@ -191,7 +224,7 @@ export default function MainBoard({ rooms }: { rooms: Room[] }) {
                                                 (member) => <Image className={styles.listAvatar} key={member} src={`/users/${member}.png`} width={24} height={24} alt={`Avatar de ${member}`} />
                                             )
                                         }
-                                        <button className={styles.btnAdd}>+</button>
+                                        <button id={room.name} className={styles.btnAdd} onClick={addUser}>+</button>
                                     </div>
                                 )
                             }

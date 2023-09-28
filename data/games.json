@@ -48,7 +48,7 @@
     "name": "Warzone Team",
     "platform": "Party",
     "game": {
-      "name": "Call of Duty: Modern Warfare II",
+      "name": "Call of Duty - Modern Warfare II",
       "category": "FPS"
     },
     "members": [
@@ -108,7 +108,7 @@
     "name": "World Army",
     "platform": "Match",
     "game": {
-      "name": "Counter-Strike: Global Offensive",
+      "name": "Counter-Strike - Global Offensive",
       "category": "FPS"
     },
     "members": [
