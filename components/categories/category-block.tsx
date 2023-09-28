@@ -8,7 +8,7 @@ import { ArrowRight } from 'styled-icons/fa-solid'
 export default function CategoryBlock({ category }: { category: Category }) {
 
     const solidBgStyle = {
-        backgroundColor: `var(--cream)`,
+        backgroundColor: `var(--block)`,
         height: `100%`,
         width: `100%`,
         backgroundSize: `cover`,
@@ -28,12 +28,18 @@ export default function CategoryBlock({ category }: { category: Category }) {
     const [imgStyle, setImgStyle] = useState<React.CSSProperties>(imageBgStyle)
 
     function handleMouseEnter() {
-        setImgStyle(imageBgStyle)
+        if (!mobile) {
+            setImgStyle(imageBgStyle)
+        }
+        
         setFocused(true)
     }
 
     function handleMouseLeave() {
-        setImgStyle(solidBgStyle)
+        if (!mobile) {
+            setImgStyle(solidBgStyle)
+        }
+        
         setFocused(false)
     }
 
@@ -48,24 +54,6 @@ export default function CategoryBlock({ category }: { category: Category }) {
             setMobile(false)
             setImgStyle(solidBgStyle)
         }
-
-        /*const handleWindowResize = () => {
-            if (window.innerWidth <= 540) {
-                setMobile(true)
-                setImgStyle(imageBgStyle)
-                console.log('Es móvil')
-            } else {
-                console.log('Es desktop')
-                setMobile(false)
-                setImgStyle(solidBgStyle)
-            }
-        };
-
-        window.addEventListener('resize', handleWindowResize);
-
-        return () => {
-            window.removeEventListener('resize', handleWindowResize);
-        };*/
     }, []);
 
     return (
@@ -76,12 +64,18 @@ export default function CategoryBlock({ category }: { category: Category }) {
             onMouseLeave={handleMouseLeave}
         >
             <div className={focused || mobile ? styles.overlay : styles.clean}>
-                <p className={styles.id}>{category.id}</p>
-                <p className={styles.name}>{category.name}</p>
+                <p className={styles.id} style={
+                            focused || mobile  ? {color: "white"} : {color: "var(--black)"} 
+                        }>{category.id}</p>
+                <p className={styles.name} style={
+                            focused || mobile  ? {color: "white"} : {color: "var(--black)"} 
+                        }>{category.name}</p>
                 <button>
                     <ArrowRight
                         size={16}
-                        color={focused || mobile  ? "white" : "black"}
+                        style={
+                            focused || mobile  ? {color: "white"} : {color: "var(--black)"} 
+                        }
                     />
                 </button>
             </div>

@@ -5,7 +5,6 @@ import categories from '@/data/categories.json'
 
 export default async function Home() {
 
-
   return (
     <>
       <MainBoard rooms={[...rooms]}/>

@@ -96,8 +96,8 @@ export default function MainBoard({ rooms }: { rooms: Room[] }) {
 
             setStates(states)
             setLanguages(languages)
-            setGame(games[0].label)
             setImgPath('/media/' + games[0].label + '.jpg')
+            setGame(games[0].label)
         },
         []
     )
@@ -149,6 +149,7 @@ export default function MainBoard({ rooms }: { rooms: Room[] }) {
         setSearch(newValue.label)
         setImgPath('/media/' + newValue.label + '.jpg')
         updateImgStyle()
+        setGame(newValue.label)
 
         console.log(search.length)
     }
@@ -161,6 +162,7 @@ export default function MainBoard({ rooms }: { rooms: Room[] }) {
         const tmp = "" + imgPath
         setImgPath('/media/' + newValue + '.jpg')
         updateImgStyle()
+        setGame(newValue)
     }
 
     function addUser(e: React.MouseEvent<HTMLElement>) {
@@ -265,9 +267,11 @@ export default function MainBoard({ rooms }: { rooms: Room[] }) {
                         <p className={styles.adSubtitle}>Join Live Stream</p>
                     </div>
                     <div className={styles.clockSection}>
-                        <div className={styles.userBallSection}>
-                            <UserBall added={added} />
-                        </div>
+                        {
+                            isLoaded && isSignedIn && user && <div className={styles.userBallSection}>
+                                <UserBall added={added} />
+                            </div>
+                        }
                         <Clock />
                     </div>
                 </div>
@@ -294,7 +298,7 @@ export default function MainBoard({ rooms }: { rooms: Room[] }) {
                             <Select id='searchbox' options={games} className={styles.searchBox} placeholder={games && games.length ? games[0].label : ''} onChange={handleChange} onInputChange={handleInputChange} />
                             <div className={styles.filtersContainer}>
                                 <button onClick={() => { setShowFilter(!showFilter) }}>
-                                    <Equalizer className={styles.filterBtn} width={24} height={24} color='black' />
+                                    <Equalizer className={styles.filterBtn} width={24} height={24} style={{ color: `val(--black)` }} />
                                 </button>
                             </div>
                         </div>
@@ -325,7 +329,13 @@ export default function MainBoard({ rooms }: { rooms: Room[] }) {
                             }
                         </div>
                         <div>
-                            <button className={search ? styles.btnRectDark : styles.btnRectDarkDisabled} disabled={search ? false : true} onClick={searchGame}>Search Now</button>
+                            <button
+                                className={search ? styles.btnRectDark : styles.btnRectDarkDisabled}
+                                disabled={search ? false : true}
+                                onClick={searchGame}
+                            >
+                                Search Now
+                            </button>
                         </div>
                     </div>
                 </div>

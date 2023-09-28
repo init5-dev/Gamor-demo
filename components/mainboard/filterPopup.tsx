@@ -34,7 +34,7 @@ export default function FilterPopup(
     return (
         <div className={styles.filterPopup}>
             <button className={styles.closeBtn} onClick={onClose}>
-                <Multiply size={16} color="#000" />
+                <Multiply size={16} styles={{color: `var(--black)`}} />
             </button>
             <div className={styles.filterSelectGroup}>
                 <div>
@@ -47,6 +47,7 @@ export default function FilterPopup(
                         placeholder={defaultState.label}
                         value={{label:stateVal, value:stateVal}}
                         onChange={selectState}
+                        className={styles.searchBox}
                     />
                     <Select
                         id='language-select'
@@ -54,6 +55,7 @@ export default function FilterPopup(
                         value={{label:langVal, value:langVal}}
                         placeholder={defaultState.label}
                         onChange={selectLang}
+                        className={styles.searchBox}
                     />
                 </div>
             </div>

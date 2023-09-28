@@ -143,7 +143,7 @@ function NavbarMobile() {
                 <div className={styles.hamburguer}>
                     <button onClick={toggleMenu}>
                         {
-                            opened ? <Multiply size={24} color="black" /> : <Bars size={24} color="black" />
+                            opened ? <Multiply style={{color: `var(--black)`}} size={24}  /> : <Bars size={24} style={{color: `var(--black)`}} />
                         }
                     </button>
                 </div>
@@ -168,7 +168,7 @@ function NavbarMobile() {
                         isLoaded && isSignedIn ? <li className={styles.user}><UserButton afterSignOutUrl="/" /></li>:
                             <div>
                                 <li className={styles.link} onClick={toggleMenu}>
-                                    <Link href='/api/auth/signin'>Sign In</Link>
+                                    <Link href='/sign-in'>Sign In</Link>
                                 </li>
                                 <li className={styles.linkBtn} onClick={toggleMenu}>
                                     <Link href='/sign-up'>Create account</Link>

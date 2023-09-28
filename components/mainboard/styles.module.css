@@ -1,6 +1,6 @@
 .mainBoard {
   border-radius: 16px;
-  background-color: var(--cream);
+  background-color: var(--block);
   width: 90%;
   margin-left: 5%;
   display: flex;
@@ -25,7 +25,7 @@
 }
 
 .resalted {
-  color: var(--orange);
+  color: var(--highlight);
 }
 
 .notice {
@@ -44,8 +44,8 @@
   left: 0;
   height: 7px;
   width: 100%;
-  border: solid 2px var(--violet);
-  border-color: var(--violet) transparent transparent transparent;
+  border: solid 2px var(--hover);
+  border-color: var(--hover) transparent transparent transparent;
   border-radius: 50%;
 }
 
@@ -55,36 +55,36 @@
 }
 
 .btnRoundWhite {
-  background-color: #fff;
+  background-color: var(--white);
   padding: 8px 16px;
   border-radius: 32px;
   border: solid;
-  border-color: #ddd;
+  border-color: var(--hcborder);
   border-width: 1px;
 }
 
 .btnRoundWhite:hover {
-  background-color: var(--violet);
+  background-color: var(--hover);
   color: white;
 }
 
 .btnRoundWhite:active {
-  background-color: var(--pink);
+  background-color: var(--active);
   color: white;
 }
 
 .link {
-  color: black;
+  color: var(--black);
   margin: 0 8px;
   font-weight: 500;
 }
 
 .link:hover {
-  color: var(--violet);
+  color: var(--hover);
 }
 
 .link:active {
-  color: var(--pink);
+  color: var(--active);
 }
 
 .bgImage {
@@ -124,29 +124,22 @@
 }
 
 .clockSection {
-  width: 100%;
-  padding: 8px;
   border-radius: 16px;
   font-weight: 700;
   display: flex;
-  align-items: center;
   justify-content: center;
-  text-align: center;
 }
 
 .clock {
   z-index: 10;
   background-color: white;
-  color: var(--violet);
+  color: var(--hover);
   font-size: medium;
   width: 84px;
-  padding: 4px 8px;
+  padding: 6px 8px;
   margin-top: 2em;
   border-radius: 16px;
   font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   text-align: center;
 }
 
@@ -164,20 +157,22 @@
 .ad {
   color: white;
   text-align: center;
-  text-shadow: 1px 1px 4px black;
+  text-shadow: 0px 0px 4px black;
 }
 
 .adTitle {
-  font-size: larger;
+  font-size: x-large;
+  font-weight: 900;
 }
 
 .adSubtitle {
-  font-size: medium;
+  font-size: larger;
+  font-weight: 700;
 }
 
 .stepNum {
   font-size: x-large;
-  color: #555;
+  color: var(--graytext);
   margin: 0 4px;
 }
 
@@ -196,14 +191,17 @@
 .tab {
   border-radius: 64px;
   padding: 4px 8px;
+  color: var(--black)
 }
 
 .tab:hover {
-  background-color: rgb(220, 220, 220);
+  background-color: var(--hovertab);
+  color: var(--white)
 }
 
 .tabActive {
-  background-color: rgb(220, 220, 220);
+  background-color: var(--activetab);
+  color: var(--white)
 }
 
 .searchContainer {
@@ -223,6 +221,7 @@
 
 .searchBox {
   width: 10em;
+  color: black;
 }
 
 .filtersContainer {
@@ -237,19 +236,20 @@
 }
 
 .filterBtn:hover {
-  background-color: var(--violet);
-  color: #fff;
+  background-color: var(--hover);
+  color: white;
 }
 
 .filterBtn:active {
-  background-color: var(--pink);
+  background-color: var(--active);
+  color: white;
 }
 
 .filtersSelector {
   position: fixed;
   width: 128px;
   height: 64px;
-  background-color: var(--orange);
+  background-color: var(--highlight);
   display: grid;
   columns: 3;
   border-radius: 16px;
@@ -264,10 +264,8 @@
   height: 128px;
   width: 100%;
   padding: 4px;
-  background-color: #fff;
+  background-color: var(--white);
   border-radius: 8px;
-  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.9),
-    0 2px 0 4px rgba(255, 255, 255, 0.6), 0 4px 0 6px rgba(255, 255, 255, 0.3);
 }
 
 .gamesList::-webkit-scrollbar {
@@ -277,15 +275,15 @@
 }
 
 .gamesList::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: var(--sbar);
 }
 
 .gamesList::-webkit-scrollbar-thumb {
-  background: #999;
+  background: var(--concrete);
 }
 
 .gamesList::-webkit-scrollbar-thumb:hover {
-  background: #bbb;
+  background: var(--hcborder);
 }
 
 .gamesListRow {
@@ -299,8 +297,8 @@
 .roomNumber {
   font-size: 14px;
   border-radius: 12px;
-  background-color: #000;
-  color: white;
+  background-color: var(--black);
+  color: var(--white);
   width: 24px;
   height: 24px;
   text-align: center;
@@ -319,39 +317,44 @@
 }
 
 .btnAdd {
-  background-color: rgb(220, 220, 220);
+  background-color: var(--hovertab);
+  color: var(--white);
   border-radius: 4px;
-  font-weight: 500;
+  font-weight: 900;
   width: 24px;
   height: 24px;
 }
 
 .btnAdd:hover {
-  background-color: rgb(200, 200, 200);
+  background-color: var(--hover);
+  color: white;
 }
 
 .btnAdd:active {
-  background-color: rgb(180, 180, 180);
+  background-color: var(--active);
+  color: white;
 }
 
 .btnRectDark {
-  color: #fff;
-  background-color: #000;
+  color: var(--white);
+  background-color: var(--black);
   padding: 8px 16px;
   border-radius: 8px;
 }
 
 .btnRectDark:hover {
-  background-color: var(--violet);
+  background-color: var(--hover);
+  color: white;
 }
 
 .btnRectDark:active {
-  background-color: var(--pink);
+  background-color: var(--active);
+  color: white;
 }
 
 .btnRectDarkDisabled {
-  color: #fff;
-  background-color: #aaa;
+  color: #777;
+  background-color: var(--disabledText);
   padding: 8px 16px;
   border-radius: 8px;
 }
@@ -363,7 +366,7 @@
   transform: translate(-50%, -50%);
   width: 256px;
   padding: 16px;
-  background-color: #ddd;
+  background-color: var(--hcborder);
   border-radius: 16px;
   box-shadow: 1px 1px 1px 2px rgba(100, 100, 100, 0.2);
   z-index: 100;
@@ -372,7 +375,7 @@
 .nothingHere{
   text-align: center;
   width: 100%;
-  color:#555;
+  color:var(--graytext);
   margin-top: 20%;
 }
 
@@ -383,7 +386,7 @@
   transform: translate(-50%, -50%);
   width: 256px;
   padding: 16px;
-  background-color: #ddd;
+  background-color: var(--hcborder);
   border-radius: 16px;
   box-shadow: 1px 1px 1px 2px rgba(100, 100, 100, 0.2);
   z-index: 100;
@@ -410,11 +413,11 @@
 }
 
 .closeBtn:hover {
-  background-color:#bbb
+  background-color: var(--disabledText)
 }
 
 .closeBtn:hover {
-  background-color:#888
+  background-color: var(--concrete)
 }
 
 .alertCloseBtn {
@@ -429,11 +432,11 @@
 }
 
 .alertCloseBtn:hover {
-  background-color:#bbb
+  background-color:var(--disabledText)
 }
 
 .alertCloseBtn:hover {
-  background-color:#888
+  background-color:var(--concrete)
 }
 
 @media only screen and (max-width: 934px) {
@@ -477,9 +480,9 @@
     position: fixed;
     width: 256px;
     padding: 16px;
-    background-color: #ddd;
+    background-color: var(--hcborder);
     border-radius: 16px;
-    box-shadow: 1px 1px 1px 2px rgba(100, 100, 100, 0.2);
+    box-shadow: 1px 1px 1px 2px var(--shadow);
     z-index: 100;
   }
   
@@ -487,9 +490,9 @@
     position: fixed;
     width: 256px;
     padding: 16px;
-    background-color: #ddd;
+    background-color: var(--hcborder);
     border-radius: 16px;
-    box-shadow: 1px 1px 1px 2px rgba(100, 100, 100, 0.2);
+    box-shadow: 1px 1px 1px 2px var(--shadow);
     z-index: 100;
     text-align: center;
   }

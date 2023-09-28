@@ -5,7 +5,7 @@ export default function Alert({ message, onClose }: { message: string, onClose: 
     return (
         <div className={styles.alert}>
             <button onClick={onClose} className={styles.alertCloseBtn}>
-                <Multiply size={16} color="#000" />
+                <Multiply size={16} style={{color: `var(--black)`}} />
             </button>
             <p>{message}</p>
         </div>

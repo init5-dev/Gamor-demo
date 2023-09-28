@@ -4,16 +4,38 @@
 
 
 :root {
-  --creamlight: rgb(235, 235, 235);
-  --cream: rgb(240, 240, 240);
-  --orange: #cc5500;
-  --violet: #7F00FF;
-  --pink: #e43090;
+  --black: #000;
+  --white: #fff;
+
+  --background: rgb(235, 235, 235);
+  --block: rgb(240, 240, 240);
+  --hovertab: rgb(110, 110, 110);
+  --activetab: rgb(110, 110, 110);
+  --highlight: #cc5500;
+  --hover: #7F00FF;
+  --active: #e43090;
+  --hcborder: #ddd;
+  --graytext: #555;
+  --concrete: #999;
+  --sbar: #f1f1f1;
+  --disabledText: #aaa;
+  --shadow: rgba(100, 100, 100, 0.2);
 }
 
 [data-theme="dark"] {
-  --creamlight: #444;
-  --cream: #333;
+  --black: #fff;
+  --white: #000;
+
+  --background: rgb(20, 20, 20);
+  --block: rgb(15, 15, 15);
+  --hcborder: #222;
+  --graytext: #555;
+  --concrete: #999;
+  --sbar: #393939;
+  --disabledText: #aaa;
+  --shadow: rgba(200, 200, 200, 0.2);
+  --hovertab: rgb(220, 220, 220);
+  --activetab: rgb(220, 220, 220);
 }
 
 body {
@@ -23,11 +45,21 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: var(--creamlight);
+  background-color: var(--background);
+  color: var(--black)
 }
 
+
 .main-container {
-  padding-top: 4em;
+  padding-top: 1em;
+}
+
+.theme-toggle-container {
+  width: 90%;
+  margin-left: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: end;
 }
 
 .auth {
@@ -46,11 +78,11 @@ body {
 @media only screen and (max-width: 900px) {
   body {
     width: 95%;
-    margin-left: 5%;
+    margin-left: 2.5%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: var(--creamlight);
+    background-color: var(--background);
   }
 }

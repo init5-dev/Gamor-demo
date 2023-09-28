@@ -17,6 +17,6 @@ export default function Clock() {
     }, []);
 
     return (
-        <p className={styles.clock}>{time}</p>
+        <div className={styles.clock}>{time}</div>
     );
 }

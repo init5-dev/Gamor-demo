@@ -4,7 +4,7 @@
   max-width: 100%;
   padding: 16px;
   margin-top: 16px;
-  background-color: var(--creamlight);
+  background-color: var(--background);
   width: 100vw;
 }
 
@@ -12,9 +12,9 @@
   display: flex;
   gap: 16px;
   align-items: center;
-  width: 100vw;
+  
   padding: 16px;
-  background-color: var(--creamlight);
+  background-color: var(--background);
 }
 
 .home {
@@ -76,30 +76,30 @@
 }
 
 .link {
-  color: black;
+  color: var(--black);
   margin: 0 8px;
   font-weight: 500;
 }
 
 .link:hover {
-  color: var(--violet);
+  color: var(--hover);
 }
 
 .link:active {
-  color: var(--pink);
+  color: var(--active);
 }
 
 .user {
   display: flex;
   gap: 8px;
   align-items: center;
-  color: black;
+  color: var(--black);
   margin: 0 8px;
 }
 
 .linkBtn {
-  background: #000;
-  color: #fff;
+  background: var(--black);
+  color: var(--white);
   border-radius: 24px;
   padding: 8px;
   width: 128px;
@@ -107,11 +107,13 @@
 }
 
 .linkBtn:hover {
-  background: var(--violet);
+  background: var(--hover);
+  color: white;
 }
 
 .linkBtn:active {
-  background: var(--pink);
+  background: var(--active);
+  color: white;
 }
 
 .accordion {
@@ -121,11 +123,11 @@
   gap: 8px;
   flex-direction: column;
   position: absolute;
-  padding: 16px;
-  background-color: var(--creamlight);
+  padding: 16px 10%;
+  background-color: var(--background);
   box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.1);
-  border-bottom: 1px solid #ccc;
-  color: #777;
+  border-bottom: 1px solid var(--hcborder);
+  color: var(--concrete);
 }
 
 .accordionHidden {
@@ -136,10 +138,22 @@
   display: flex;
   flex-direction: column;
   padding: 2px 4px 8px;
-  background-color: white;
+  background-color: var(highcontrast)
 }
 
 .accordionDropdownHidden {
   display: none;
+}
+
+@media only screen and (max-width: 720px) {
+  .linkBtn {
+    background: var(--black);
+    color: var(--white);
+    border-radius: 24px;
+    padding: 8px;
+    width: 128px;
+    text-align: center;
+    margin-top: 16px;
+  }
 }
 
