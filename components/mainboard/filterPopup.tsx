@@ -41,18 +41,20 @@ export default function FilterPopup(
                     <h2>Filter your search</h2>
                 </div>
                 <div>
+                    <label>State</label>
                     <Select
                         id='state-select'
                         options={states}
                         placeholder={defaultState.label}
-                        value={{label:stateVal, value:stateVal}}
+                        defaultValue={{label:stateVal, value:stateVal}}
                         onChange={selectState}
                         className={styles.searchBox}
                     />
+                    <label>Language</label>
                     <Select
                         id='language-select'
                         options={languages}
-                        value={{label:langVal, value:langVal}}
+                        defaultValue={{label:langVal, value:langVal}}
                         placeholder={defaultState.label}
                         onChange={selectLang}
                         className={styles.searchBox}

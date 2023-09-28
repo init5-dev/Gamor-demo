@@ -291,8 +291,8 @@ export default function MainBoard({ rooms }: { rooms: Room[] }) {
                             showFilter && <FilterPopup
                                 languages={languages}
                                 states={states}
-                                defaultLanguage={defLang}
-                                defaultState={defState}
+                                defaultLanguage={{label:language, value:language}}
+                                defaultState={{label:state, value: state}}
                                 onEdit={getFilters}
                                 onClose={() => setShowFilter(false)}
                             />
