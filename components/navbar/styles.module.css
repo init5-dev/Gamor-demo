@@ -42,7 +42,6 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  width: 50%;
 }
 
 .titleContainer {
@@ -51,7 +50,8 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  width: 35%;
+  position: relative;
+  width: 100vw;
 }
 
 .linksContainerRight {
@@ -86,6 +86,14 @@
 
 .link:active {
   color: #e43090;
+}
+
+.user {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  color: black;
+  margin: 0 8px;
 }
 
 .linkBtn {

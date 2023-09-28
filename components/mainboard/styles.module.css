@@ -63,7 +63,28 @@
   border-width: 1px;
 }
 
+.btnRoundWhite:hover {
+  background-color: #9e1f63;
+  color: white
+}
+
+.btnRoundWhite:active {
+  background-color: #e43090;
+  color: white
+}
+
 .link {
+  color: black;
+  margin: 0 8px;
+  font-weight: 500;
+}
+
+.link:hover {
+  color: #9e1f63;
+}
+
+.link:active {
+  color: #e43090;
 }
 
 .bgImage {

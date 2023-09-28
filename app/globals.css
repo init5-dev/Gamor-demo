@@ -31,7 +31,7 @@ body {
 
 @media only screen and (max-width: 900px) {
   body {
-    width: 100%;
+    width: 95%;
     margin: 0;
     display: flex;
     flex-direction: column;

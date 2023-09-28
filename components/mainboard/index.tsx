@@ -10,6 +10,7 @@ import Select from 'react-select'
 import { ISelectOption } from '@/libs/interfaces'
 import { SingleValue, ActionMeta } from 'react-select'
 import FilterPopup from './filterPopup'
+import Link from 'next/link'
 
 const roomStates = ['active', 'inactive', 'all']
 const defState = { label: 'all', value: 'all' }
@@ -84,7 +85,7 @@ export default function MainBoard({ rooms }: { rooms: Room[] }) {
             console.log("STATE: " + state)
             console.log("LANG: " + language)
             console.log("RESULT: " + JSON.stringify(res))
-        } 
+        }
     }
 
     function selectPlatform(e: MouseEvent<HTMLElement>) {
@@ -121,8 +122,12 @@ export default function MainBoard({ rooms }: { rooms: Room[] }) {
                     <p>gamor now has <span className={styles.underlined}>stream party</span> platform</p>
                 </div>
                 <div className={styles.access}>
-                    <button className={styles.btnRoundWhite}>Create account</button>
-                    <button className={styles.link}>Sign in</button>
+                    <button className={styles.btnRoundWhite}>
+                        <Link href='/sign-up'>Create account</Link>
+                    </button>
+                    <button className={styles.link}>
+                        <Link href='/sign-in'>Sign in</Link>
+                    </button>
                 </div>
             </div>
             <div className={styles.boardSectionWithBg}>
@@ -130,6 +135,9 @@ export default function MainBoard({ rooms }: { rooms: Room[] }) {
                     <div className={styles.ad}>
                         <p className={styles.adTitle}>CoD New Season</p>
                         <p className={styles.adSubtitle}>Join Live Stream</p>
+                    </div>
+                    <div className={styles.userBall}>
+
                     </div>
                     <div>
                         {/*<CountDown />*/}

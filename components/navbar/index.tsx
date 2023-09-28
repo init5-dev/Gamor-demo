@@ -5,8 +5,12 @@ import Image from "next/image"
 import styles from './styles.module.css'
 import { Bars, Multiply, AngleDown, AngleUp } from "styled-icons/fa-solid"
 import { useEffect, useState } from "react"
+import { UserButton } from "@clerk/nextjs"
+import { useUser } from "@clerk/nextjs";
 
 function NavbarDesktop() {
+
+    const { isLoaded, isSignedIn, user } = useUser();
 
     function dropdownMouseEnter(id: string) {
 
@@ -56,15 +60,18 @@ function NavbarDesktop() {
                 <strong>Gamor</strong>
             </div>
             <div className={styles.linksContainerRight}>
-                <ul className={styles.linksList}>
+                {
+                    isLoaded && isSignedIn ? <UserButton afterSignOutUrl="/" /> :
+                        <ul className={styles.linksList}>
 
-                    <li className={styles.link}>
-                        <Link href='/sign-in'>Sign In</Link>
-                    </li>
-                    <li className={styles.linkBtn}>
-                        <Link href='/sign-up'>Create account</Link>
-                    </li>
-                </ul>
+                            <li className={styles.link}>
+                                <Link href='/sign-in'>Sign In</Link>
+                            </li>
+                            <li className={styles.linkBtn}>
+                                <Link href='/sign-up'>Create account</Link>
+                            </li>
+                        </ul>
+                }
             </div>
         </nav>
     )
@@ -81,6 +88,7 @@ function NavbarMobile() {
     const [opened, setOpened] = useState(false)
     const [funcionesDown, setFuncionesDown] = useState(true)
     const [descargasDown, setDescargasDown] = useState(true)
+    const { isLoaded, isSignedIn, user } = useUser();
 
     function toggleMenu() {
         const accordion = document.getElementById('accordion')
@@ -156,12 +164,17 @@ function NavbarMobile() {
                     <li className={styles.link} onClick={toggleMenu}>
                         <Link href='/#'>Premium</Link>
                     </li>
-                    <li className={styles.link} onClick={toggleMenu}>
-                        <Link href='/api/auth/signin'>Sign In</Link>
-                    </li>
-                    <li className={styles.linkBtn} onClick={toggleMenu}>
-                        <Link href='/sign-up'>Create account</Link>
-                    </li>
+                    {
+                        isLoaded && isSignedIn ? <li className={styles.user}><UserButton afterSignOutUrl="/" /></li>:
+                            <div>
+                                <li className={styles.link} onClick={toggleMenu}>
+                                    <Link href='/api/auth/signin'>Sign In</Link>
+                                </li>
+                                <li className={styles.linkBtn} onClick={toggleMenu}>
+                                    <Link href='/sign-up'>Create account</Link>
+                                </li>
+                            </div>
+                    }
                 </ul>
             </div>
 
