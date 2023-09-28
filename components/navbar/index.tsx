@@ -59,10 +59,10 @@ function NavbarDesktop() {
                 <ul className={styles.linksList}>
 
                     <li className={styles.link}>
-                        <Link href='/login'>Sign In</Link>
+                        <Link href='/sign-in'>Sign In</Link>
                     </li>
                     <li className={styles.linkBtn}>
-                        <Link href='/register'>Create account</Link>
+                        <Link href='/sign-up'>Create account</Link>
                     </li>
                 </ul>
             </div>
@@ -157,10 +157,10 @@ function NavbarMobile() {
                         <Link href='/#'>Premium</Link>
                     </li>
                     <li className={styles.link} onClick={toggleMenu}>
-                        <Link href='/login'>Sign In</Link>
+                        <Link href='/api/auth/signin'>Sign In</Link>
                     </li>
                     <li className={styles.linkBtn} onClick={toggleMenu}>
-                        <Link href='/register'>Create account</Link>
+                        <Link href='/sign-up'>Create account</Link>
                     </li>
                 </ul>
             </div>
