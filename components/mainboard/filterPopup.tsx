@@ -34,7 +34,7 @@ export default function FilterPopup(
     return (
         <div className={styles.filterPopup}>
             <button className={styles.closeBtn} onClick={onClose}>
-                <Multiply size={16} styles={{color: `var(--black)`}} />
+                <Multiply size={16} style={{color: `var(--black)`}} />
             </button>
             <div className={styles.filterSelectGroup}>
                 <div>
