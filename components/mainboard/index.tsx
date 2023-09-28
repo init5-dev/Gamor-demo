@@ -247,7 +247,7 @@ export default function MainBoard({ rooms }: { rooms: Room[] }) {
                 <div className={styles.bgImage} style={imgStyle}>
                     <div className={styles.ad}>
                         <p className={styles.adTitle}>{game}</p>
-                        <p className={styles.adSubtitle}>Join Live Stream</p>
+                        <p className={styles.adSubtitle}>Join Live {searchResults.length ? searchResults[0].platform : '!'}</p>
                     </div>
                     <div className={styles.clockSection}>
                         {
