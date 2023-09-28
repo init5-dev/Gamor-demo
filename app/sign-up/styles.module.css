@@ -7,5 +7,5 @@
 }
 
 .link:hover {
-  color: #7F00FF;
+  color: var(--violet);
 }

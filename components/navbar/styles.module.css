@@ -4,7 +4,7 @@
   max-width: 100%;
   padding: 16px;
   margin-top: 16px;
-  background-color: rgb(235, 235, 235);
+  background-color: var(--creamlight);
   width: 100vw;
 }
 
@@ -14,7 +14,7 @@
   align-items: center;
   width: 100vw;
   padding: 16px;
-  background-color: rgb(235, 235, 235);
+  background-color: var(--creamlight);
 }
 
 .home {
@@ -82,11 +82,11 @@
 }
 
 .link:hover {
-  color: #7F00FF;
+  color: var(--violet);
 }
 
 .link:active {
-  color: #e43090;
+  color: var(--pink);
 }
 
 .user {
@@ -107,21 +107,22 @@
 }
 
 .linkBtn:hover {
-  background: #7F00FF;
+  background: var(--violet);
 }
 
 .linkBtn:active {
-  background: #e43090;
+  background: var(--pink);
 }
 
 .accordion {
-  width: 100vw;
+  width: 105%;
+  margin-left: -5%;
   display: flex;
   gap: 8px;
   flex-direction: column;
   position: absolute;
   padding: 16px;
-  background-color: rgb(235, 235, 235);
+  background-color: var(--creamlight);
   box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.1);
   border-bottom: 1px solid #ccc;
   color: #777;

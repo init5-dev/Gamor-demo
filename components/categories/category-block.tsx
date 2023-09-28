@@ -8,7 +8,7 @@ import { ArrowRight } from 'styled-icons/fa-solid'
 export default function CategoryBlock({ category }: { category: Category }) {
 
     const solidBgStyle = {
-        backgroundColor: `rgb(240, 240, 240)`,
+        backgroundColor: `var(--cream)`,
         height: `100%`,
         width: `100%`,
         backgroundSize: `cover`,
@@ -25,7 +25,7 @@ export default function CategoryBlock({ category }: { category: Category }) {
 
     const [mobile, setMobile] = useState(false)
     const [focused, setFocused] = useState(false)
-    const [imgStyle, setImgStyle] = useState<React.CSSProperties>(mobile ? imageBgStyle : solidBgStyle)
+    const [imgStyle, setImgStyle] = useState<React.CSSProperties>(imageBgStyle)
 
     function handleMouseEnter() {
         setImgStyle(imageBgStyle)
@@ -49,7 +49,7 @@ export default function CategoryBlock({ category }: { category: Category }) {
             setImgStyle(solidBgStyle)
         }
 
-        const handleWindowResize = () => {
+        /*const handleWindowResize = () => {
             if (window.innerWidth <= 540) {
                 setMobile(true)
                 setImgStyle(imageBgStyle)
@@ -65,7 +65,7 @@ export default function CategoryBlock({ category }: { category: Category }) {
 
         return () => {
             window.removeEventListener('resize', handleWindowResize);
-        };
+        };*/
     }, []);
 
     return (

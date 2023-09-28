@@ -2,6 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+
+:root {
+  --creamlight: rgb(235, 235, 235);
+  --cream: rgb(240, 240, 240);
+  --orange: #cc5500;
+  --violet: #7F00FF;
+  --pink: #e43090;
+}
+
+[data-theme="dark"] {
+  --creamlight: #444;
+  --cream: #333;
+}
+
 body {
   width: 90%;
   margin: 0 auto;
@@ -9,7 +23,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: rgb(235, 235, 235);
+  background-color: var(--creamlight);
 }
 
 .main-container {
@@ -32,11 +46,11 @@ body {
 @media only screen and (max-width: 900px) {
   body {
     width: 95%;
-    margin: 0;
+    margin-left: 5%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: rgb(235, 235, 235);
+    background-color: var(--creamlight);
   }
 }

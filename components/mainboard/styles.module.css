@@ -1,6 +1,6 @@
 .mainBoard {
   border-radius: 16px;
-  background-color: rgb(240, 240, 240);
+  background-color: var(--cream);
   width: 90%;
   margin-left: 5%;
   display: flex;
@@ -25,7 +25,7 @@
 }
 
 .resalted {
-  color: #cc5500;
+  color: var(--orange);
 }
 
 .notice {
@@ -44,8 +44,8 @@
   left: 0;
   height: 7px;
   width: 100%;
-  border: solid 2px #7F00FF;
-  border-color: #7F00FF transparent transparent transparent;
+  border: solid 2px var(--violet);
+  border-color: var(--violet) transparent transparent transparent;
   border-radius: 50%;
 }
 
@@ -64,12 +64,12 @@
 }
 
 .btnRoundWhite:hover {
-  background-color: #7F00FF;
+  background-color: var(--violet);
   color: white;
 }
 
 .btnRoundWhite:active {
-  background-color: #e43090;
+  background-color: var(--pink);
   color: white;
 }
 
@@ -80,11 +80,11 @@
 }
 
 .link:hover {
-  color: #7F00FF;
+  color: var(--violet);
 }
 
 .link:active {
-  color: #e43090;
+  color: var(--pink);
 }
 
 .bgImage {
@@ -137,7 +137,7 @@
 .clock {
   z-index: 10;
   background-color: white;
-  color: #7F00FF;
+  color: var(--violet);
   font-size: medium;
   width: 84px;
   padding: 4px 8px;
@@ -237,19 +237,19 @@
 }
 
 .filterBtn:hover {
-  background-color: #7F00FF;
+  background-color: var(--violet);
   color: #fff;
 }
 
 .filterBtn:active {
-  background-color: #e43090;
+  background-color: var(--pink);
 }
 
 .filtersSelector {
   position: fixed;
   width: 128px;
   height: 64px;
-  background-color: #cc5500;
+  background-color: var(--orange);
   display: grid;
   columns: 3;
   border-radius: 16px;
@@ -342,11 +342,11 @@
 }
 
 .btnRectDark:hover {
-  background-color: #7F00FF;
+  background-color: var(--violet);
 }
 
 .btnRectDark:active {
-  background-color: #e43090;
+  background-color: var(--pink);
 }
 
 .btnRectDarkDisabled {
