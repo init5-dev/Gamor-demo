@@ -38,7 +38,7 @@ export default function FilterPopup(
             </button>
             <div className={styles.filterSelectGroup}>
                 <div>
-                    <h2>Filtros</h2>
+                    <h2>Filter your search</h2>
                 </div>
                 <div>
                     <Select

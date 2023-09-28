@@ -1,21 +1,28 @@
-import { usePathname } from 'next/navigation'
-import Navbar from '@/components/navbar'
+'use client'
 
-export default function MainContainer({ children }: { children: React.ReactNode }) {
+import { usePathname } from "next/navigation";
+import Navbar from "./navbar";
 
+export default function MainContainer({ child }: { child: React.ReactNode }) {
     const pathname = usePathname();
 
     return (
         <>
             {
-                pathname !== '/sign-up' && pathname !== '/sign-in' && <div>
+                pathname !== '/sign-in' && pathname !== '/sign-up' ? <div>
                     <Navbar />
                     <main>
                         <div className='main-container'>
-                            {children}
+                            {child}
                         </div>
                     </main>
                 </div>
+                    :
+                    <main>
+                        <div className='auth'>
+                            {child}
+                        </div>
+                    </main>
             }
         </>
     )

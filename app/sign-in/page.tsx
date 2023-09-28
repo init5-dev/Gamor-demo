@@ -1,10 +1,12 @@
 import { SignIn } from "@clerk/nextjs";
 import styles from './styles.module.css'
+import Link from "next/link";
  
-export default function Page() {
+export default function SignInPage() {
   return (
-    <div className={styles.auth}>
+    <>
       <SignIn />
-    </div>
+      <Link className={styles.link} href="/">Return to home</Link>
+    </>
   );
 }

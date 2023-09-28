@@ -1,8 +1,8 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { Roboto } from 'next/font/google'
-import Navbar from '@/components/navbar'
 import { ClerkProvider } from '@clerk/nextjs'
+import MainContainer from '@/components/main-container'
 
 const font = Roboto({ weight: ['400'], subsets: ['latin'] })
 
@@ -16,16 +16,12 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  
   return (
     <html lang="en">
       <ClerkProvider>
         <body className={font.className}>
-          <Navbar />
-          <main>
-            <div className='main-container'>
-              {children}
-            </div>
-          </main>
+          <MainContainer child={children} />
         </body>
       </ClerkProvider>
     </html>
