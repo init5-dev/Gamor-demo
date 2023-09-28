@@ -150,8 +150,8 @@ export default function MainBoard({ rooms }: { rooms: Room[] }) {
         setImgPath('/media/' + newValue.label + '.jpg')
         updateImgStyle()
         setGame(newValue.label)
+        setSearchResults([])
 
-        console.log(search.length)
     }
 
     function handleInputChange(newValue: string, actionMeta: InputActionMeta) {
@@ -163,6 +163,7 @@ export default function MainBoard({ rooms }: { rooms: Room[] }) {
         setImgPath('/media/' + newValue + '.jpg')
         updateImgStyle()
         setGame(newValue)
+        setSearchResults([])
     }
 
     function addUser(e: React.MouseEvent<HTMLElement>) {
@@ -179,16 +180,16 @@ export default function MainBoard({ rooms }: { rooms: Room[] }) {
             if (joinedRoom[0].name.indexOf(e.currentTarget.id) < 0) {
                 return
             }
-        }
 
-        if (e.currentTarget.textContent === '-') {
-            setAdded(false)
-            setJoinedRoom(null)
-            setAttention({
-                active: true,
-                message: 'Bye!'
-            })
-            return
+            if (e.currentTarget.textContent === '-' && joinedRoom[0]?.game.name === game) {
+                setAdded(false)
+                setJoinedRoom(null)
+                setAttention({
+                    active: true,
+                    message: 'Bye!'
+                })
+                return
+            }
         }
 
         const roomToJoin = rooms.filter(
@@ -210,24 +211,6 @@ export default function MainBoard({ rooms }: { rooms: Room[] }) {
             })
             return
         }
-        /*e.currentTarget.textContent = !added ? '-' : '+'
-        if(added) {
-            setAttention({
-                active: true,
-                message: 'You have joined ' + joinedRoom[0].name
-            })
-        } else {
-            setAttention({
-                active: true,
-                message: 'Bye!'
-            })
-        }
-    } else {
-        setAttention({
-            active: true,
-            message: 'Attempt to join failed'
-        })
-    }   */
     }
 
     function getFilters(stateArg: string | undefined = undefined, languageArg: string | undefined = undefined) {
@@ -269,7 +252,9 @@ export default function MainBoard({ rooms }: { rooms: Room[] }) {
                     <div className={styles.clockSection}>
                         {
                             isLoaded && isSignedIn && user && <div className={styles.userBallSection}>
-                                <UserBall added={added} />
+                                {
+                                    joinedRoom && <UserBall added={added && joinedRoom[0]?.game.name === game} />
+                                }
                             </div>
                         }
                         <Clock />
@@ -323,7 +308,7 @@ export default function MainBoard({ rooms }: { rooms: Room[] }) {
                                                 (member) => <Image className={styles.listAvatar} key={member} src={`/users/${member}.png`} width={24} height={24} alt={`Avatar de ${member}`} />
                                             )
                                         }
-                                        <button id={room.name} className={styles.btnAdd} onClick={addUser}>+</button>
+                                        <button id={room.name} className={styles.btnAdd} onClick={addUser}>{joinedRoom ? (joinedRoom[0]?.game.name === game ? '-' : '+') : '+'}</button>
                                     </div>
                                 ) : <div className={styles.nothingHere}>Nothing here!</div>
                             }

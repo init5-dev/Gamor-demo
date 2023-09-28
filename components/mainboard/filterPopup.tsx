@@ -14,8 +14,8 @@ export default function FilterPopup(
         }) {
 
     const [open, setOpen] = useState(true);
-    const [stateVal, setStateVal] = useState("all")
-    const [langVal, setLangVal] = useState("all")
+    const [stateVal, setStateVal] = useState(defaultState.label)
+    const [langVal, setLangVal] = useState(defaultLanguage.label)
 
     function selectState(newValue: SingleValue<ISelectOption>, actionMeta: ActionMeta<ISelectOption>) {
         if (newValue) {
