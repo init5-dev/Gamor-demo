@@ -20,6 +20,164 @@
   height: 450px;
 }
 
+.link {
+  color: var(--dark);
+  margin: 0 8px;
+  font-weight: 500;
+}
+
+.link:hover {
+  color: var(--hover);
+}
+
+.link:active {
+  color: var(--active);
+}
+
+.userBall {
+  width: 36px;
+  border-radius: 24px;
+}
+
+.genericUserBall {
+  width: 36px;
+  height: 36px;
+  border-radius: 36px;
+  background-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.clock {
+  z-index: 10;
+  background-color: var(--block);
+  color: var(--hover);
+  font-size: medium;
+  width: 84px;
+  padding: 6px 8px;
+  margin-top: 2em;
+  border-radius: 16px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.searchContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.searchHeader {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 8px 16px;
+}
+
+.filtersSelector {
+  position: fixed;
+  width: 128px;
+  height: 64px;
+  background-color: var(--highlight);
+  display: grid;
+  columns: 3;
+  border-radius: 16px;
+}
+
+
+
+.btnAdd:hover {
+  background-color: var(--hover);
+  color: white;
+}
+
+.btnAdd:active {
+  background-color: var(--active);
+  color: white;
+}
+
+.btnRectDark {
+  color: var(--light);
+  background-color: var(--dark);
+  padding: 8px 16px;
+  border-radius: 8px;
+}
+
+.btnRectDark:hover {
+  background-color: var(--hover);
+  color: white;
+}
+
+.btnRectDark:active {
+  background-color: var(--active);
+  color: white;
+}
+
+.btnRectDarkDisabled {
+  color: #777;
+  background-color: var(--grey);
+  padding: 8px 16px;
+  border-radius: 8px;
+}
+
+.boardSectionWithBg {
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  height: 450px;
+  width: 33%;
+}
+
+.bgImage {
+  position: relative;
+  image-rendering: optimizeQuality;
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-repeat: none;
+  padding: 32px;
+}
+
+.ad {
+  color: white;
+  text-align: center;
+  text-shadow: 0px 0px 4px black;
+}
+
+.adTitle {
+  font-size: x-large;
+  font-weight: 900;
+}
+
+.adSubtitle {
+  font-size: larger;
+  font-weight: 700;
+}
+
+.clockSection {
+  border-radius: 16px;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+}
+
+.userBallSection {
+  position: relative;
+  width: 25%;
+  margin: -28px;
+  z-index: 11;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .lemma {
   font-size: xx-large;
 }
@@ -55,11 +213,11 @@
 }
 
 .btnRoundWhite {
-  background-color: var(--white);
+  background-color: var(--light);
   padding: 8px 16px;
   border-radius: 32px;
   border: solid;
-  border-color: var(--hcborder);
+  border-color: var(--lightgrey);
   border-width: 1px;
 }
 
@@ -73,143 +231,110 @@
   color: white;
 }
 
-.link {
-  color: var(--black);
-  margin: 0 8px;
-  font-weight: 500;
-}
-
-.link:hover {
-  color: var(--hover);
-}
-
-.link:active {
-  color: var(--active);
-}
-
-.bgImage {
-  position: relative;
-  image-rendering: optimizeQuality;
-  height: 100%;
-  width: 100%;
-  background-size: cover;
-  background-repeat: none;
-  padding: 32px;
-}
-
-.userBallSection {
-  position: relative;
-  width: 25%;
-  margin: -28px;
-  z-index: 11;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.userBall {
-  width: 36px;
-  border-radius: 24px;
-}
-
-.genericUserBall {
-  width: 36px;
-  height: 36px;
-  border-radius: 36px;
-  background-color: rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(2px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.clockSection {
+.filterPopup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 256px;
+  padding: 16px;
+  background-color: var(--lightgrey);
   border-radius: 16px;
-  font-weight: 700;
-  display: flex;
-  justify-content: center;
+  box-shadow: 1px 1px 1px 2px rgba(100, 100, 100, 0.2);
+  z-index: 100;
 }
 
-.clock {
-  z-index: 10;
-  background-color: white;
-  color: var(--hover);
-  font-size: medium;
-  width: 84px;
-  padding: 6px 8px;
-  margin-top: 2em;
+.filterPopup {
+    position: fixed;
+    width: 256px;
+    padding: 16px;
+    background-color: var(--lightgrey);
+    border-radius: 16px;
+    box-shadow: 1px 1px 1px 2px var(--shadow);
+    z-index: 100;
+}
+
+  .closeBtn {
+    position: relative;
+    top: -12px;
+    left: 96%;
+    width: 24px;
+    height: 24px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+}
+  
+  .closeBtn:hover {
+    background-color: var(--grey);
+}
+  
+  .closeBtn:active {
+    background-color: var(--darkgrey);
+}
+  
+  .filterSelectGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+}
+
+.searchBox {
+  width: 10em;
+  color: black;
+}
+
+.alert {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 256px;
+  padding: 16px;
+  background-color: var(--lightgrey);
   border-radius: 16px;
-  font-weight: 700;
+  box-shadow: 1px 1px 1px 2px rgba(100, 100, 100, 0.2);
+  z-index: 100;
   text-align: center;
 }
 
-.boardSectionWithBg {
-  background-color: transparent;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+@media only screen and (max-width: 934px) {
+  .alert {
+    position: fixed;
+    width: 256px;
+    padding: 16px;
+    background-color: var(--lightgrey);
+    border-radius: 16px;
+    box-shadow: 1px 1px 1px 2px var(--shadow);
+    z-index: 100;
+    text-align: center;
+  }
+}
+
+.alertCloseBtn {
+  position: relative;
+  top: -12px;
+  left: 50%;
+  width: 24px;
+  height: 24px;
   align-items: center;
-  gap: 16px;
-  height: 450px;
-  width: 33%;
-}
-
-.ad {
-  color: white;
-  text-align: center;
-  text-shadow: 0px 0px 4px black;
-}
-
-.adTitle {
-  font-size: x-large;
-  font-weight: 900;
-}
-
-.adSubtitle {
-  font-size: larger;
-  font-weight: 700;
-}
-
-.stepNum {
-  font-size: x-large;
-  color: var(--graytext);
-  margin: 0 4px;
-}
-
-.stepCont {
-  margin: 0 4px;
-}
-
-.tabsPane {
-  display: flex;
   justify-content: center;
-  align-items: center;
-  gap: 8px;
-  border-radius: 64px;
+  border-radius: 12px;
 }
 
-.tab {
-  border-radius: 64px;
-  padding: 4px 8px;
-  color: var(--black)
+.alertCloseBtn:hover {
+  background-color: var(--grey);
 }
 
-.tab:hover {
-  background-color: var(--hovertab);
-  color: var(--white)
+.alertCloseBtn:hover {
+  background-color: var(--grey);
 }
 
-.tabActive {
-  background-color: var(--activetab);
-  color: var(--white)
-}
-
-.searchContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 16px;
+.searchBox {
+  width: 10em;
+  color: black;
 }
 
 .searchHeader {
@@ -217,11 +342,6 @@
   align-items: center;
   gap: 16px;
   padding: 8px 16px;
-}
-
-.searchBox {
-  width: 10em;
-  color: black;
 }
 
 .filtersContainer {
@@ -245,16 +365,6 @@
   color: white;
 }
 
-.filtersSelector {
-  position: fixed;
-  width: 128px;
-  height: 64px;
-  background-color: var(--highlight);
-  display: grid;
-  columns: 3;
-  border-radius: 16px;
-}
-
 .gamesList {
   overflow-y: auto;
   overflow-x: auto;
@@ -264,26 +374,8 @@
   height: 128px;
   width: 100%;
   padding: 4px;
-  background-color: var(--white);
+  background-color: var(--light);
   border-radius: 8px;
-}
-
-.gamesList::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
-  border-radius: 20px;
-}
-
-.gamesList::-webkit-scrollbar-track {
-  background: var(--sbar);
-}
-
-.gamesList::-webkit-scrollbar-thumb {
-  background: var(--concrete);
-}
-
-.gamesList::-webkit-scrollbar-thumb:hover {
-  background: var(--hcborder);
 }
 
 .gamesListRow {
@@ -297,8 +389,8 @@
 .roomNumber {
   font-size: 14px;
   border-radius: 12px;
-  background-color: var(--black);
-  color: var(--white);
+  background-color: var(--dark);
+  color: var(--light);
   width: 24px;
   height: 24px;
   text-align: center;
@@ -317,126 +409,53 @@
 }
 
 .btnAdd {
-  background-color: var(--hovertab);
-  color: var(--white);
+  background-color: var(--concrete);
+  color: var(--light);
   border-radius: 4px;
   font-weight: 900;
   width: 24px;
   height: 24px;
 }
 
-.btnAdd:hover {
-  background-color: var(--hover);
-  color: white;
-}
-
-.btnAdd:active {
-  background-color: var(--active);
-  color: white;
-}
-
-.btnRectDark {
-  color: var(--white);
-  background-color: var(--black);
-  padding: 8px 16px;
-  border-radius: 8px;
-}
-
-.btnRectDark:hover {
-  background-color: var(--hover);
-  color: white;
-}
-
-.btnRectDark:active {
-  background-color: var(--active);
-  color: white;
-}
-
-.btnRectDarkDisabled {
-  color: #777;
-  background-color: var(--disabledText);
-  padding: 8px 16px;
-  border-radius: 8px;
-}
-
-.filterPopup {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 256px;
-  padding: 16px;
-  background-color: var(--hcborder);
-  border-radius: 16px;
-  box-shadow: 1px 1px 1px 2px rgba(100, 100, 100, 0.2);
-  z-index: 100;
-}
-
-.nothingHere{
+.nothingHere {
   text-align: center;
   width: 100%;
-  color:var(--graytext);
+  color: var(--darkgrey);
   margin-top: 20%;
 }
 
-.alert {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 256px;
-  padding: 16px;
-  background-color: var(--hcborder);
-  border-radius: 16px;
-  box-shadow: 1px 1px 1px 2px rgba(100, 100, 100, 0.2);
-  z-index: 100;
-  text-align: center;
+.stepNum {
+  font-size: x-large;
+  color: var(--darkgrey);
+  margin: 0 4px;
 }
 
-.filterSelectGroup {
+.stepCont {
+  margin: 0 4px;
+}
+
+.tabsPane {
   display: flex;
-  flex-direction: column;
-  gap: 16px;
-  align-items: center;
   justify-content: center;
-}
-
-.closeBtn {
-  position: relative;
-  top: -12px;
-  left: 96%;
-  width: 24px;
-  height: 24px;
   align-items: center;
-  justify-content: center;
-  border-radius: 12px;
+  gap: 8px;
+  border-radius: 64px;
 }
 
-.closeBtn:hover {
-  background-color: var(--disabledText)
+.tab {
+  border-radius: 64px;
+  padding: 4px 8px;
+  color: var(--dark);
 }
 
-.closeBtn:hover {
-  background-color: var(--concrete)
+.tab:hover {
+  background-color: var(--concrete);
+  color: var(--light);
 }
 
-.alertCloseBtn {
-  position: relative;
-  top: -12px;
-  left: 50%;
-  width: 24px;
-  height: 24px;
-  align-items: center;
-  justify-content: center;
-  border-radius: 12px;
-}
-
-.alertCloseBtn:hover {
-  background-color:var(--disabledText)
-}
-
-.alertCloseBtn:hover {
-  background-color:var(--concrete)
+.tabActive {
+  background-color: var(--concrete);
+  color: var(--light);
 }
 
 @media only screen and (max-width: 934px) {
@@ -476,24 +495,4 @@
     width: 100%;
   }
 
-  .filterPopup {
-    position: fixed;
-    width: 256px;
-    padding: 16px;
-    background-color: var(--hcborder);
-    border-radius: 16px;
-    box-shadow: 1px 1px 1px 2px var(--shadow);
-    z-index: 100;
-  }
-  
-  .alert {
-    position: fixed;
-    width: 256px;
-    padding: 16px;
-    background-color: var(--hcborder);
-    border-radius: 16px;
-    box-shadow: 1px 1px 1px 2px var(--shadow);
-    z-index: 100;
-    text-align: center;
-  }
 }

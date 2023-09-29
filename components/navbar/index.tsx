@@ -143,7 +143,7 @@ function NavbarMobile() {
                 <div className={styles.hamburguer}>
                     <button onClick={toggleMenu}>
                         {
-                            opened ? <Multiply style={{color: `var(--black)`}} size={24}  /> : <Bars size={24} style={{color: `var(--black)`}} />
+                            opened ? <Multiply style={{color: `var(--dark)`}} size={24}  /> : <Bars size={24} style={{color: `var(--dark)`}} />
                         }
                     </button>
                 </div>

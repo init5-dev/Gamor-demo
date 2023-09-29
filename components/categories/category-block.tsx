@@ -65,16 +65,16 @@ export default function CategoryBlock({ category }: { category: Category }) {
         >
             <div className={focused || mobile ? styles.overlay : styles.clean}>
                 <p className={styles.id} style={
-                            focused || mobile  ? {color: "white"} : {color: "var(--black)"} 
+                            focused || mobile  ? {color: "white"} : {color: "var(--darkgrey)"} 
                         }>{category.id}</p>
                 <p className={styles.name} style={
-                            focused || mobile  ? {color: "white"} : {color: "var(--black)"} 
+                            focused || mobile  ? {color: "white"} : {color: "var(--dark)"} 
                         }>{category.name}</p>
                 <button>
                     <ArrowRight
                         size={16}
                         style={
-                            focused || mobile  ? {color: "white"} : {color: "var(--black)"} 
+                            focused || mobile  ? {color: "white"} : {color: "var(--dark)"} 
                         }
                     />
                 </button>

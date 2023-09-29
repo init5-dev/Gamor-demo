@@ -76,7 +76,7 @@
 }
 
 .link {
-  color: var(--black);
+  color: var(--dark);
   margin: 0 8px;
   font-weight: 500;
 }
@@ -93,13 +93,13 @@
   display: flex;
   gap: 8px;
   align-items: center;
-  color: var(--black);
+  color: var(--dark);
   margin: 0 8px;
 }
 
 .linkBtn {
-  background: var(--black);
-  color: var(--white);
+  background: var(--dark);
+  color: var(--light);
   border-radius: 24px;
   padding: 8px;
   width: 128px;
@@ -126,8 +126,8 @@
   padding: 16px 10%;
   background-color: var(--background);
   box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.1);
-  border-bottom: 1px solid var(--hcborder);
-  color: var(--concrete);
+  border-bottom: 1px solid var(--lightgrey);
+  color: var(--grey);
 }
 
 .accordionHidden {
@@ -147,8 +147,8 @@
 
 @media only screen and (max-width: 720px) {
   .linkBtn {
-    background: var(--black);
-    color: var(--white);
+    background: var(--dark);
+    color: var(--light);
     border-radius: 24px;
     padding: 8px;
     width: 128px;

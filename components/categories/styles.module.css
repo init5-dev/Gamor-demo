@@ -16,13 +16,13 @@
 }
 
 .categoryBlock {
-  color: var(--black);
+  color: var(--dark);
   border-radius: 16px;
   box-shadow: 1px 1px 1px rgba(100, 100, 100, 0.2);
 }
 
 .categoryBlockFocused {
-  color: var(--white);
+  color: var(--light);
   border-radius: 16px;
   box-shadow: 1px 1px 2px rgba(100, 100, 100, 0.2);
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.75);

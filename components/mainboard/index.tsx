@@ -178,16 +178,15 @@ export default function MainBoard({ rooms }: { rooms: Room[] }) {
 
         if (joinedRoom) {
             if (joinedRoom[0].name.indexOf(e.currentTarget.id) < 0) {
-                return
+                setAttention({
+                    active: true,
+                    message: 'Bye!'
+                })
             }
 
             if (e.currentTarget.textContent === '-' && joinedRoom[0]?.game.name === game) {
                 setAdded(false)
                 setJoinedRoom(null)
-                setAttention({
-                    active: true,
-                    message: 'Bye!'
-                })
                 return
             }
         }
@@ -234,14 +233,16 @@ export default function MainBoard({ rooms }: { rooms: Room[] }) {
                 <div className={styles.notice}>
                     <p>gamor now has <span className={styles.underlined}>stream party</span> platform</p>
                 </div>
-                <div className={styles.access}>
-                    <button className={styles.btnRoundWhite}>
-                        <Link href='/sign-up'>Create account</Link>
-                    </button>
-                    <button className={styles.link}>
-                        <Link href='/sign-in'>Sign in</Link>
-                    </button>
-                </div>
+                {
+                    !isSignedIn && <div className={styles.access}>
+                        <button className={styles.btnRoundWhite}>
+                            <Link href='/sign-up'>Create account</Link>
+                        </button>
+                        <button className={styles.link}>
+                            <Link href='/sign-in'>Sign in</Link>
+                        </button>
+                    </div>
+                }
             </div>
             <div className={styles.boardSectionWithBg}>
                 <div className={styles.bgImage} style={imgStyle}>
@@ -291,8 +292,8 @@ export default function MainBoard({ rooms }: { rooms: Room[] }) {
                             showFilter && <FilterPopup
                                 languages={languages}
                                 states={states}
-                                defaultLanguage={{label:language, value:language}}
-                                defaultState={{label:state, value: state}}
+                                defaultLanguage={{ label: language, value: language }}
+                                defaultState={{ label: state, value: state }}
                                 onEdit={getFilters}
                                 onClose={() => setShowFilter(false)}
                             />
