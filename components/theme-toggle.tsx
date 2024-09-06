@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 export default function ThemeToggle() {
-    const [theme, setTheme] = useState('light')
+    const [theme, setTheme] = useState('dark')
 
     const toggleTheme = () => {
         const newValue = (theme === "light") ? "dark" : "light"
@@ -23,7 +23,7 @@ export default function ThemeToggle() {
                 onChange={toggleTheme}
             />
             <label htmlFor="theme">
-                {theme === "light" ? "Light mode" : "Dark mode"}
+                Light mode
             </label>
         </div>
     );

@@ -18,7 +18,7 @@ export default function RootLayout({
 }) {
   
   return (
-    <html lang="en">
+    <html lang="en" data-theme="dark">
       <ClerkProvider>
         <body className={font.className}>
           <MainContainer child={children} />
